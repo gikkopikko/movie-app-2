@@ -1,6 +1,10 @@
 package com.brillio.auth.controller;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -32,14 +36,20 @@ public class AuthController {
 		return current;
 	}
 	@PostMapping("/login")
-	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest, HttpServletResponse response) {
 
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = tokenProvider.generateToken(authentication);
-		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+//		  Cookie cookie = new Cookie("JWTToken","Bearer-"+new JwtAuthenticationResponse(jwt).getAccessToken());
+
+		    // expires in 7 days
+//		    cookie.setMaxAge(7 * 24 * 60 * 60);
+//		    response.addCookie(cookie);
+//		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+	    return new ResponseEntity<>(new JwtAuthenticationResponse(jwt), HttpStatus.OK);
 	}
 	
 }

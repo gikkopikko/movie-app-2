@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,8 +14,9 @@ import com.brillio.auth.model.Customer;
 
 public class UserPrincipal implements UserDetails {
 	private String id;
-	private String name;
 	private String username;
+	private String name;
+	private String email;
 	private String password;
 	private Collection<? extends GrantedAuthority> authorities;
 
@@ -22,21 +24,43 @@ public class UserPrincipal implements UserDetails {
 		super();
 	}
 
-	public UserPrincipal(String id, String name, String username, String password,
+//	public UserPrincipal(String id, String name, String username, String password,
+//			Collection<? extends GrantedAuthority> authorities) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.username = username;
+//		this.password = password;
+//		this.authorities = authorities;
+//	}
+
+	
+
+	public UserPrincipal(String id,  String username,String name, String email, String password,
 			Collection<? extends GrantedAuthority> authorities) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.username = username;
+		this.email = email;
 		this.password = password;
 		this.authorities = authorities;
 	}
-
 	public static UserPrincipal create(Customer customer) {
-		List<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
-
-		return new UserPrincipal(customer.getId(), customer.getName(), customer.getUsername(), customer.getPassword(),
+//		List<GrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("user"));
+		List<GrantedAuthority> authorities=customer.getRoles().stream().map(role ->
+        new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+		
+		return new UserPrincipal(customer.getId(), customer.getUsername(),customer.getName(), customer.getEmail(),customer.getPassword(),
 				authorities);
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getId() {

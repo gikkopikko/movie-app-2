@@ -1,6 +1,9 @@
 package com.brillio.auth.controller;
 
 import java.net.URI;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,16 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.brillio.auth.model.Customer;
 import com.brillio.auth.payload.ApiResponse;
-import com.brillio.auth.payload.JwtAuthenticationResponse;
-import com.brillio.auth.payload.LoginRequest;
 import com.brillio.auth.payload.SignUpRequest;
 import com.brillio.auth.repository.CustomerRepository;
-import com.brillio.auth.security.JwtTokenProvider;
+
 
 
 @RestController
 //@RequestMapping("/api/auth")
-public class AuthController {
+public class SignUpController {
 
 //	@Autowired
 //	AuthenticationManager authenticationManager;
@@ -37,8 +38,8 @@ public class AuthController {
 	
 	BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
 
-	@Autowired
-	JwtTokenProvider tokenProvider;
+//	@Autowired
+//	JwtTokenProvider tokenProvider;
 
 //	@PostMapping("/login")
 //	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
@@ -56,10 +57,11 @@ public class AuthController {
 		if (customerRepository.existsByUsername(signUpRequest.getUsername())) {
 			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
 		}
-
+		Set<String> roles=new HashSet<>();
+		roles.add("USER");
 		// Creating user's account
 		Customer customer = new Customer(signUpRequest.getUsername(), signUpRequest.getName(),
-				signUpRequest.getPassword());
+				signUpRequest.getEmail(),signUpRequest.getPassword(),roles);
 
 		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
 
