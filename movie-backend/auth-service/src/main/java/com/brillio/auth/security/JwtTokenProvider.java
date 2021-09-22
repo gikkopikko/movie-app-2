@@ -40,14 +40,14 @@ public class JwtTokenProvider {
 				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
 	}
 
-	public String getUserIdFromJWT(String token) {
+	public String getUserUsernameFromJWT(String token) {
 		Claims claims = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
 
 		return claims.getSubject();
 	}
     public Authentication getAuthentication(String token) {
 //        UserDetails userDetails = this.userDetailsService.loadUserByUsername(getUserIdFromJWT(token));
-        UserDetails userDetails = userDetailsService.loadUserByUsername(getUserIdFromJWT(token));
+        UserDetails userDetails = userDetailsService.loadUserByUsername(getUserUsernameFromJWT(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 	public boolean validateToken(String authToken) {
