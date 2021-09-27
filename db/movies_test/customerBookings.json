@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "6145be110b88d240f743fed8"
+  },
+  "username": "siddharth.garg",
+  "movieId": "horror1",
+  "movieName": "horror movie 1",
+  "seatsBooked": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "amountPaid": "50"
+},{
+  "_id": {
+    "$oid": "6145be790b88d240f743fed9"
+  },
+  "username": "siddharth.garg",
+  "movieId": "scifi2",
+  "movieName": "scifi movie 2",
+  "seatsBooked": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "amountPaid": "60"
+}]
