@@ -7,12 +7,12 @@ pipeline{
                 	cd movie-backend
 			cd auth-service
                 	mvn compile
-        		""",
+        		"""
   		bat """
                 	cd movie-backend
 			cd customer-service
                 	mvn compile
-        		""",
+        		"""
   		bat """
                 	cd movie-backend
 			cd signup-service
