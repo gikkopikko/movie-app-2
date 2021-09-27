@@ -1,0 +1,123 @@
+[{
+  "_id": {
+    "$oid": "614473e35e4f9b69a9b3afd3"
+  },
+  "movieId": "horror1",
+  "movieName": "horror movie 1",
+  "category": "horror",
+  "description": "this is a horror movie 1 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "price": "10",
+  "rating": 9,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    29
+  ],
+  "totalSeatsReserved": 12,
+  "actors": [
+    "actor1",
+    "actor2"
+  ],
+  "director": "director"
+},{
+  "_id": {
+    "$oid": "614476305e4f9b69a9b3afd4"
+  },
+  "movieId": "horror2",
+  "category": "horror",
+  "movieName": "horror movie 2",
+  "description": "this is a horror movie 2 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "price": "12",
+  "rating": 8,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    29
+  ],
+  "totalSeatsReserved": 12,
+  "actors": [
+    "actor1",
+    "actor2"
+  ],
+  "director": "director"
+},{
+  "_id": {
+    "$oid": "614476505e4f9b69a9b3afd5"
+  },
+  "movieId": "scifi1",
+  "movieName": "scifi movie 1",
+  "category": "scifi",
+  "description": "this is a scifi movie 1 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "price": "10",
+  "rating": 9,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "actor1",
+    "actor2"
+  ],
+  "director": "director"
+},{
+  "_id": {
+    "$oid": "6144767e5e4f9b69a9b3afd6"
+  },
+  "movieId": "scifi2",
+  "movieName": "scifi movie 2",
+  "category": "scifi",
+  "description": "this is a scifi movie 2 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "price": "12",
+  "rating": 8,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "actor1",
+    "actor2"
+  ],
+  "director": "director"
+}]
