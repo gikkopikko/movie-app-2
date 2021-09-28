@@ -22,14 +22,14 @@
     20,
     29
   ],
-  "totalSeatsReserved": 12,
   "actors": [
     "Annabelle Wallis",
     "Maddie Hasson",
     "Jake Abel",
     "George Young"
   ],
-  "director": "James Wan"
+  "director": "James Wan",
+  "totalSeatsOccupied": 12
 },{
   "_id": {
     "$oid": "614476305e4f9b69a9b3afd4"
@@ -54,14 +54,14 @@
     20,
     29
   ],
-  "totalSeatsReserved": 12,
   "actors": [
     "Anya Taylor-Joy",
     "Thomasin Mckenzie",
     "Diana Rigg",
     "Matt Smith"
   ],
-  "director": "Edgar Wright"
+  "director": "Edgar Wright",
+  "totalSeatsOccupied": 12
 },{
   "_id": {
     "$oid": "614476505e4f9b69a9b3afd5"
@@ -87,14 +87,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Timothée Chalamet",
     "Zendaya",
     "Rebecca Ferguson",
     "Dave Bautista"
   ],
-  "director": "Denis Villeneuve"
+  "director": "Denis Villeneuve",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6144767e5e4f9b69a9b3afd6"
@@ -120,14 +120,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Simu Liu",
     "Awkwafina",
     "Ben Kingsley",
     "Tony Chiu-Wai Leung"
   ],
-  "director": "Destin Daniel Cretton"
+  "director": "Destin Daniel Cretton",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ad7078bcb167ff0fadd7"
@@ -153,14 +153,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Nicolas Cage",
     "Sofia Boutella",
     "Nick Cassavetes",
     "Bill Moseley"
   ],
-  "director": "Sion Sono"
+  "director": "Sion Sono",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152adbe78bcb167ff0fadd8"
@@ -186,14 +186,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Scarlett Johansson",
     "Florence Pugh",
     "David Harbour",
     "Rachel Weisz"
   ],
-  "director": "Cate Shortland"
+  "director": "Cate Shortland",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae0578bcb167ff0fadd9"
@@ -219,14 +219,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Matthew McConaughey",
     "Anne Hathaway",
     "Jessica Chastain",
     "John Lithgow"
   ],
-  "director": "Christopher Nolan"
+  "director": "Christopher Nolan",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae1b78bcb167ff0fadda"
@@ -252,14 +252,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Leonardo DiCaprio",
     "Joseph Gordon-Levitt",
     "\tElliot Page",
     "Tom Hardy"
   ],
-  "director": "Christopher Nolan"
+  "director": "Christopher Nolan",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae2a78bcb167ff0faddb"
@@ -285,14 +285,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Hugh Jackman",
     "Patrick Stewart",
     "\tDafne Keen",
     "Boyd Holbrook"
   ],
-  "director": "James Mangold"
+  "director": "James Mangold",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae4278bcb167ff0faddc"
@@ -318,14 +318,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Margot Robbie",
     "Idris Elba",
     "John Cena",
     "Michael Rooker"
   ],
-  "director": "James Gunn"
+  "director": "James Gunn",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae5e78bcb167ff0faddd"
@@ -351,14 +351,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Oscar Issac",
     "Tiffany Haddish",
     "Tye Sheridan",
     "Willem Dafoe"
   ],
-  "director": "Paul Schrader"
+  "director": "Paul Schrader",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae8178bcb167ff0fadde"
@@ -384,14 +384,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Kiana Madeira",
     "Maya Hawke",
     "Benjamin Flores Jr.",
     "Olivia Scott Welch"
   ],
-  "director": "Leigh Janiak"
+  "director": "Leigh Janiak",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152ae9278bcb167ff0faddf"
@@ -417,14 +417,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Chris Rock",
     "Samuel L. Jackson",
     "Max Minghella",
     "Marisol Nichols"
   ],
-  "director": "Darren Lynn Bousman"
+  "director": "Darren Lynn Bousman",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152aea478bcb167ff0fade0"
@@ -450,14 +450,14 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Dave Bautista",
     "Ella Purnell",
     "Ana de la Reguera",
     "Omari Hardwick"
   ],
-  "director": "Zack Snyder"
+  "director": "Zack Snyder",
+  "totalSeatsOccupied": 13
 },{
   "_id": {
     "$oid": "6152be2a78bcb167ff0fade2"
@@ -483,12 +483,12 @@
     21,
     29
   ],
-  "totalSeatsReserved": 13,
   "actors": [
     "Ryan Reynolds",
     "Jodie Comer",
     "Taika Waititi",
     "Lil Rel Howery"
   ],
-  "director": "Shawn Levy"
+  "director": "Shawn Levy",
+  "totalSeatsOccupied": 13
 }]
