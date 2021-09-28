@@ -3,11 +3,11 @@
     "$oid": "614473e35e4f9b69a9b3afd3"
   },
   "movieId": "horror1",
-  "movieName": "horror movie 1",
+  "movieName": "Malignant",
   "category": "horror",
-  "description": "this is a horror movie 1 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "description": "Madison is paralyzed by shocking visions of grisly murders, and her torment worsens as she discovers that these waking dreams are in fact terrifying realities.",
   "price": "10",
-  "rating": 9,
+  "rating": 6,
   "occupiedSeats": [
     1,
     2,
@@ -24,19 +24,21 @@
   ],
   "totalSeatsReserved": 12,
   "actors": [
-    "actor1",
-    "actor2"
+    "Annabelle Wallis",
+    "Maddie Hasson",
+    "Jake Abel",
+    "George Young"
   ],
-  "director": "director"
+  "director": "James Wan"
 },{
   "_id": {
     "$oid": "614476305e4f9b69a9b3afd4"
   },
   "movieId": "horror2",
   "category": "horror",
-  "movieName": "horror movie 2",
-  "description": "this is a horror movie 2 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
-  "price": "12",
+  "movieName": "Last Night in Soho",
+  "description": "An aspiring fashion designer is mysteriously able to enter the 1960s where she encounters a dazzling wannabe singer. But the glamour is not all it appears to be and the dreams of the past start to crack and splinter into something darker.",
+  "price": "11.5",
   "rating": 8,
   "occupiedSeats": [
     1,
@@ -54,18 +56,185 @@
   ],
   "totalSeatsReserved": 12,
   "actors": [
-    "actor1",
-    "actor2"
+    "Anya Taylor-Joy",
+    "Thomasin Mckenzie",
+    "Diana Rigg",
+    "Matt Smith"
   ],
-  "director": "director"
+  "director": "Edgar Wright"
 },{
   "_id": {
     "$oid": "614476505e4f9b69a9b3afd5"
   },
+  "movieId": "action1",
+  "movieName": "Dune",
+  "category": "action",
+  "description": "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+  "price": "12",
+  "rating": 9,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Timothée Chalamet",
+    "Zendaya",
+    "Rebecca Ferguson",
+    "Dave Bautista"
+  ],
+  "director": "Denis Villeneuve"
+},{
+  "_id": {
+    "$oid": "6144767e5e4f9b69a9b3afd6"
+  },
+  "movieId": "action2",
+  "movieName": "Shang-Chi and the Legend of the Ten Rings",
+  "category": "action",
+  "description": "Shang-Chi, the master of weaponry-based Kung Fu, is forced to confront his past after being drawn into the Ten Rings organization.",
+  "price": "12",
+  "rating": 8,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Simu Liu",
+    "Awkwafina",
+    "Ben Kingsley",
+    "Tony Chiu-Wai Leung"
+  ],
+  "director": "Destin Daniel Cretton"
+},{
+  "_id": {
+    "$oid": "6152ad7078bcb167ff0fadd7"
+  },
   "movieId": "scifi1",
-  "movieName": "scifi movie 1",
-  "category": "scifi",
-  "description": "this is a scifi movie 1 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "movieName": "Prisoners of the Ghostland",
+  "category": "sci-fi",
+  "description": "A notorious criminal must break an evil curse in order to rescue an abducted girl who has mysteriously disappeared.",
+  "price": "11",
+  "rating": 5,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Nicolas Cage",
+    "Sofia Boutella",
+    "Nick Cassavetes",
+    "Bill Moseley"
+  ],
+  "director": "Sion Sono"
+},{
+  "_id": {
+    "$oid": "6152adbe78bcb167ff0fadd8"
+  },
+  "movieId": "scifi2",
+  "movieName": "Black Widow",
+  "category": "sci-fi",
+  "description": "Natasha Romanoff confronts the darker parts of her ledger when a dangerous conspiracy with ties to her past arises.",
+  "price": "12",
+  "rating": 7,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Scarlett Johansson",
+    "Florence Pugh",
+    "David Harbour",
+    "Rachel Weisz"
+  ],
+  "director": "Cate Shortland"
+},{
+  "_id": {
+    "$oid": "6152ae0578bcb167ff0fadd9"
+  },
+  "movieId": "scifi3",
+  "movieName": "Interstellar",
+  "category": "sci-fi",
+  "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+  "price": "12",
+  "rating": 9,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Matthew McConaughey",
+    "Anne Hathaway",
+    "Jessica Chastain",
+    "John Lithgow"
+  ],
+  "director": "Christopher Nolan"
+},{
+  "_id": {
+    "$oid": "6152ae1b78bcb167ff0fadda"
+  },
+  "movieId": "scifi4",
+  "movieName": "Inception",
+  "category": "sci-fi",
+  "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
   "price": "10",
   "rating": 9,
   "occupiedSeats": [
@@ -85,18 +254,218 @@
   ],
   "totalSeatsReserved": 13,
   "actors": [
-    "actor1",
-    "actor2"
+    "Leonardo DiCaprio",
+    "Joseph Gordon-Levitt",
+    "\tElliot Page",
+    "Tom Hardy"
   ],
-  "director": "director"
+  "director": "Christopher Nolan"
 },{
   "_id": {
-    "$oid": "6144767e5e4f9b69a9b3afd6"
+    "$oid": "6152ae2a78bcb167ff0faddb"
   },
-  "movieId": "scifi2",
-  "movieName": "scifi movie 2",
-  "category": "scifi",
-  "description": "this is a scifi movie 2 aaaaaaaaaaa aaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaa aaaaa aaaaaa aaaaaaaaaaaaaaaaa",
+  "movieId": "scifi5",
+  "movieName": "Logan",
+  "category": "sci-fi",
+  "description": "In a future where mutants are nearly extinct, an elderly and weary Logan leads a quiet life. But when Laura, a mutant child pursued by scientists, comes to him for help, he must get her to safety.",
+  "price": "11.5",
+  "rating": 8,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Hugh Jackman",
+    "Patrick Stewart",
+    "\tDafne Keen",
+    "Boyd Holbrook"
+  ],
+  "director": "James Mangold"
+},{
+  "_id": {
+    "$oid": "6152ae4278bcb167ff0faddc"
+  },
+  "movieId": "action4",
+  "movieName": "The Suicide Squad",
+  "category": "action",
+  "description": "Supervillains Harley Quinn, Bloodsport, Peacemaker and a collection of nutty cons at Belle Reve prison join the super-secret, super-shady Task Force X as they are dropped off at the remote, enemy-infused island of Corto Maltese.",
+  "price": "11.5",
+  "rating": 7,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Margot Robbie",
+    "Idris Elba",
+    "John Cena",
+    "Michael Rooker"
+  ],
+  "director": "James Gunn"
+},{
+  "_id": {
+    "$oid": "6152ae5e78bcb167ff0faddd"
+  },
+  "movieId": "action5",
+  "movieName": "The Card Counter",
+  "category": "action",
+  "description": "Redemption is the long game in Paul Schrader's THE CARD COUNTER. Told with Schrader's trademark cinematic intensity, the revenge thriller tells the story of an ex-military interrogator turned gambler haunted by the ghosts of his past.",
+  "price": "10",
+  "rating": 6,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Oscar Issac",
+    "Tiffany Haddish",
+    "Tye Sheridan",
+    "Willem Dafoe"
+  ],
+  "director": "Paul Schrader"
+},{
+  "_id": {
+    "$oid": "6152ae8178bcb167ff0fadde"
+  },
+  "movieId": "horror3",
+  "movieName": "Fear Street: Part One - 1994",
+  "category": "horror",
+  "description": "A circle of teenage friends accidentally encounter the ancient evil responsible for a series of brutal murders that have plagued their town for over 300 years. Welcome to Shadyside.",
+  "price": "11",
+  "rating": 7,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Kiana Madeira",
+    "Maya Hawke",
+    "Benjamin Flores Jr.",
+    "Olivia Scott Welch"
+  ],
+  "director": "Leigh Janiak"
+},{
+  "_id": {
+    "$oid": "6152ae9278bcb167ff0faddf"
+  },
+  "movieId": "horror4",
+  "movieName": "Spiral",
+  "category": "horror",
+  "description": "A criminal mastermind unleashes a twisted form of justice in Spiral, the terrifying new chapter from the book of Saw.",
+  "price": "11.2",
+  "rating": 6,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Chris Rock",
+    "Samuel L. Jackson",
+    "Max Minghella",
+    "Marisol Nichols"
+  ],
+  "director": "Darren Lynn Bousman"
+},{
+  "_id": {
+    "$oid": "6152aea478bcb167ff0fade0"
+  },
+  "movieId": "horror5",
+  "movieName": "Army of the Dead",
+  "category": "horror",
+  "description": "Following a zombie outbreak in Las Vegas, a group of mercenaries take the ultimate gamble, venturing into the quarantine zone to pull off the greatest heist ever attempted.",
+  "price": "10.5",
+  "rating": 6,
+  "occupiedSeats": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    12,
+    13,
+    17,
+    19,
+    20,
+    21,
+    29
+  ],
+  "totalSeatsReserved": 13,
+  "actors": [
+    "Dave Bautista",
+    "Ella Purnell",
+    "Ana de la Reguera",
+    "Omari Hardwick"
+  ],
+  "director": "Zack Snyder"
+},{
+  "_id": {
+    "$oid": "6152be2a78bcb167ff0fade2"
+  },
+  "movieId": "action3",
+  "movieName": "Free Guy",
+  "category": "action",
+  "description": "A bank teller discovers that he's actually an NPC inside a brutal, open world video game.",
   "price": "12",
   "rating": 8,
   "occupiedSeats": [
@@ -116,8 +485,10 @@
   ],
   "totalSeatsReserved": 13,
   "actors": [
-    "actor1",
-    "actor2"
+    "Ryan Reynolds",
+    "Jodie Comer",
+    "Taika Waititi",
+    "Lil Rel Howery"
   ],
-  "director": "director"
+  "director": "Shawn Levy"
 }]
