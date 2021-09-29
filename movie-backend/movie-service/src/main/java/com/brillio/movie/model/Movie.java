@@ -17,13 +17,17 @@ public class Movie {
 	Integer totalSeatsOccupied;
 	List<String> actors;
 	String director;
+	String posterURL;
 
 	public Movie() {
 		super();
 	}
 
+
+
 	public Movie(String movieId, String category, String movieName, String description, String price, Integer rating,
-			List<Integer> occupiedSeats, Integer totalSeatsOccupied, List<String> actors, String director) {
+			List<Integer> occupiedSeats, Integer totalSeatsOccupied, List<String> actors, String director,
+			String posterURL) {
 		super();
 		this.movieId = movieId;
 		this.category = category;
@@ -35,7 +39,10 @@ public class Movie {
 		this.totalSeatsOccupied = totalSeatsOccupied;
 		this.actors = actors;
 		this.director = director;
+		this.posterURL = posterURL;
 	}
+
+
 
 	public String getId() {
 		return id;
@@ -124,5 +131,18 @@ public class Movie {
 	public void setDirector(String director) {
 		this.director = director;
 	}
+
+
+
+	public String getPosterURL() {
+		return posterURL;
+	}
+
+
+
+	public void setPosterURL(String posterURL) {
+		this.posterURL = posterURL;
+	}
+	
 
 }
