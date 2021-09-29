@@ -20,9 +20,11 @@ import com.brillio.auth.model.Customer;
 import com.brillio.auth.payload.ApiResponse;
 import com.brillio.auth.payload.SignUpRequest;
 import com.brillio.auth.repository.CustomerRepository;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 
+@CrossOrigin
 @RestController
 //@RequestMapping("/api/auth")
 public class SignUpController {
