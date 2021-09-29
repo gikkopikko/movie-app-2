@@ -1,8 +1,8 @@
-* {
+.seats-booking-body * {
   box-sizing: border-box;
 }
 
-body {
+.seats-booking-body {
   background-color: #242333;
   color: #fff;
   display: flex;
@@ -30,7 +30,7 @@ body {
   appearance: none;
 }
 
-.container {
+.seats-container {
   perspective: 1000px;
   margin-bottom: 30px;
   border: none;
@@ -46,6 +46,7 @@ body {
   color: rgb(21, 204, 128);
   padding-left: 0;
   padding-right: 0;
+  padding-top: 2px;
 }
 
 .seat.selected {
@@ -106,7 +107,7 @@ body {
 
 .row {
   display: flex;
-  padding-left: 10px;
+  padding-left: 7px;
 }
 
 .screen {
