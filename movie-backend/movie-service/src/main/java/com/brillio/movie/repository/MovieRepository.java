@@ -1,5 +1,6 @@
 package com.brillio.movie.repository;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import com.brillio.movie.model.Movie;
 public interface MovieRepository extends MongoRepository<Movie, String> {
 
 	Optional<Movie> findByMovieId(String movieName);
+	List<Movie> findAllByCategory(String category);
 
 //	Movie findByMovieName(String movieName);
 

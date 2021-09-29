@@ -3,15 +3,14 @@ import { Table } from "react-bootstrap";
 import "../css/profile.css";
 
 class Profile extends Component {
-
-    state={
-        userData:[],
-        columns : [
-            { dataField: 'sid', text: 'Id', sort: true },
-            { dataField: 'fname', text: 'First Name', sort: true },
-            { dataField: 'address', text: 'Address', sort: true }
-          ],
-    };
+  state = {
+    userData: [],
+    columns: [
+      { dataField: "sid", text: "Id", sort: true },
+      { dataField: "fname", text: "First Name", sort: true },
+      { dataField: "address", text: "Address", sort: true },
+    ],
+  };
   render() {
     return (
       <div>
