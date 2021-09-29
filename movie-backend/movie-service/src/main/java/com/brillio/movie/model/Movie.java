@@ -13,6 +13,7 @@ public class Movie {
 	String description;
 	String price;
 	Integer rating;
+	String posterURL;
 	List<Integer> occupiedSeats;
 	Integer totalSeatsOccupied;
 	List<String> actors;
@@ -22,15 +23,15 @@ public class Movie {
 		super();
 	}
 
-	public Movie(String movieId, String category, String movieName, String description, String price, Integer rating,
-			List<Integer> occupiedSeats, Integer totalSeatsOccupied, List<String> actors, String director) {
-		super();
+	public Movie(String id, String movieId, String category, String movieName, String description, String price, Integer rating, String posterURL, List<Integer> occupiedSeats, Integer totalSeatsOccupied, List<String> actors, String director) {
+		this.id = id;
 		this.movieId = movieId;
 		this.category = category;
 		this.movieName = movieName;
 		this.description = description;
 		this.price = price;
 		this.rating = rating;
+		this.posterURL = posterURL;
 		this.occupiedSeats = occupiedSeats;
 		this.totalSeatsOccupied = totalSeatsOccupied;
 		this.actors = actors;
@@ -125,4 +126,11 @@ public class Movie {
 		this.director = director;
 	}
 
+	public String getPosterURL() {
+		return posterURL;
+	}
+
+	public void setPosterURL(String posterURL) {
+		this.posterURL = posterURL;
+	}
 }
