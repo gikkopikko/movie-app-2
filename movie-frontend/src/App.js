@@ -1,13 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import SeatBooking from './components/SeatBooking';
-import Profile from './components/Profile';
+import SeatBooking from "./components/SeatBooking.jsx";
 
 function App() {
   return (
     <div className="App">
-      {/* <SeatBooking/> */}
-      <Profile/>
+    <SeatBooking/>
     </div>
   );
 }
