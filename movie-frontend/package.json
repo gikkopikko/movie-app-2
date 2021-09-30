@@ -24,7 +24,9 @@
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "react-test-renderer": "^17.0.2",
+    "react-validation": "^3.0.7",
     "redux": "^4.1.1",
+    "validator": "^13.6.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -35,8 +37,11 @@
     "cucumber": "cucumber-js ./myFeatures -r ./mySteps",
     "eject": "react-scripts eject"
   },
-  "moduleNameMapper": {
-    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+  "jest": {
+    "automock": false,
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    }
   },
   "eslintConfig": {
     "extends": [

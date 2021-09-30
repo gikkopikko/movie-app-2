@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "6154c82aed2b518d7ed39418"
+  },
+  "categoryName": "horror"
+},{
+  "_id": {
+    "$oid": "6154c859ed2b518d7ed39419"
+  },
+  "categoryName": "sci-fi"
+},{
+  "_id": {
+    "$oid": "6154c86ced2b518d7ed3941a"
+  },
+  "categoryName": "action"
+}]

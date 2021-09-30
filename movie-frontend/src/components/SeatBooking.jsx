@@ -55,7 +55,7 @@ export default class SeatBooking extends Component {
   render() {
     return (
       <body>
-        <div>
+        <div className="seats-booking-body">
           <div className="movie-container">
             {/* <label>Pick a movie:</label> */}
             <select id="movie">
@@ -85,7 +85,7 @@ export default class SeatBooking extends Component {
             </li>
           </ul>
 
-          <div className="container">
+          <div className="seats-container">
             <div className="screen"></div>
             {rows.map((row) => {
               return (

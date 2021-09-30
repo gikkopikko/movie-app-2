@@ -35,6 +35,13 @@ MovieRepository movieRepository;
 		return movieRepository.findByMovieId(movieId).get();
 	
 	}
+	
+	@GetMapping("/movies/price/{movieId}")
+	public String getPriceByMovie(@PathVariable String movieId) {
+		Movie movie = movieRepository.findByMovieId(movieId).get();
+		return movie.getPrice();
+	
+	}
 
 	@PutMapping("/setoccupied/{movieId}")
 	public ResponseEntity<?> setOccupiedSeats( @PathVariable String movieId,@RequestBody SetOccupiedRequest setOccupiedRequest) {
