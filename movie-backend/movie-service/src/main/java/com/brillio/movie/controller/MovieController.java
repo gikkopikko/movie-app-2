@@ -36,6 +36,13 @@ public class MovieController {
 	public List<Movie> getMoviesByCategory(@PathVariable String category){
 		return movieRepository.findAllByCategory(category);
 	}
+	
+	@GetMapping("/movies/price/{movieId}")
+	public String getPriceByMovie(@PathVariable String movieId) {
+		Movie movie = movieRepository.findByMovieId(movieId).get();
+		return movie.getPrice();
+	
+	}
 
 	@PutMapping("/setoccupied/{movieId}")
 	public ResponseEntity<?> setOccupiedSeats(@PathVariable String movieId,
