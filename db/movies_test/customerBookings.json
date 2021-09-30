@@ -28,4 +28,36 @@
     5
   ],
   "amountPaid": "60"
+},{
+  "_id": {
+    "$oid": "61558d0c6e34bc24f38d30c7"
+  },
+  "username": "Alankrita",
+  "movieId": "scifi2",
+  "movieName": "Black Widow",
+  "seatsBooked": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "amountPaid": "60.0",
+  "_class": "com.brillio.booking.model.CustomerBooking"
+},{
+  "_id": {
+    "$oid": "61558f1bfd09d615cae797a6"
+  },
+  "username": "Alankrita2",
+  "movieId": "horror2",
+  "movieName": "Last Night in Soho",
+  "seatsBooked": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "amountPaid": "57.5",
+  "_class": "com.brillio.booking.model.CustomerBooking"
 }]

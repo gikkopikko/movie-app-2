@@ -5,26 +5,37 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
 import com.brillio.auth.repository.CustomerBookingRepository;
 import com.brillio.auth.repository.CustomerRepository;
 import com.brillio.booking.model.CustomerBooking;
+import com.brillio.booking.payload.SignUpRequest;
 import com.brillio.booking.model.Customer;
 
 
 @RestController
-
+@CrossOrigin
 public class BookingController {
 
-@Autowired
-CustomerBookingRepository customerBookingRepository;
+	 String url = "http://localhost:9095/movies/price/";
+	
+     @Autowired
+     CustomerBookingRepository customerBookingRepository;
 
-@Autowired
-CustomerRepository customerRepository;
+     @Autowired
+     CustomerRepository customerRepository;
 
 
 	@GetMapping("/bookings/{username}")
@@ -49,6 +60,37 @@ CustomerRepository customerRepository;
 		return ResponseEntity.ok(customer);
 	
 	}
+	
+	
+
+    @PostMapping("/current/book")
+    public String insertStudent(@RequestBody SignUpRequest signUpRequest){
+        try {RestTemplate template = new RestTemplate();
+             String amountPaid;
+             HttpHeaders headers = new HttpHeaders();
+             HttpEntity<String> entity = new HttpEntity<String>(headers);
+        	ResponseEntity<String> response = template.exchange(url+signUpRequest.getMovieId(), HttpMethod.GET, entity, String.class);
+        	String price = response.getBody();
+        	
+        	double movie_price = Double.parseDouble(price);
+        	double amount = signUpRequest.getSeatsBooked().size() * movie_price;
+        	
+        	
+        	amountPaid = Double.toString(amount);       	
+        	
+        	CustomerBooking customerBooking = new CustomerBooking(signUpRequest.getUsername(), signUpRequest.getMovieId(),
+    				signUpRequest.getMovieName(),signUpRequest.getSeatsBooked(),amountPaid);
+        	
+        	
+            customerBookingRepository.save(customerBooking);
+            return("Data is inserted "+ amountPaid );
+        
+        	
+        }catch(Exception e){
+            return (e.getMessage());
+        }
+
+    }
 
 //	@PostMapping("/signup")
 //	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
