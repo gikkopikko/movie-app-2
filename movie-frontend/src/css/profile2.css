@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+.profile-container {
+  color: white;
+  background-color: rgb(73, 6, 94);
+  margin: 0;
+  padding: 20px;
+  min-height: 90vh;
+  font-size: 1.7rem;
+}
+
+.profile-inner-container {
+  background-color: rgb(72, 35, 82);
+  border: 0;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 20px 20px;
+  display: inline-block;
+  /* justify-content: left; */
+  font-size: 1.2rem;
+}
+.profile-inner-container p {
+  margin: 6px 0;
+}
+
+.profile-button {
+  background-color: rgb(72, 35, 82);
+  color: inherit;
+  padding: 3px;
+  font-size: 1.5rem;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.profile-button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(72, 35, 82);
+}
