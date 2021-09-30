@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../css/seatbooking.css";
 
 const rows = [0, 1, 2, 3, 4, 5];
 const cols = [1, 2, 3, 4, 5, 6, 7, 8];
