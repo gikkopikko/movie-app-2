@@ -1,0 +1,44 @@
+pipeline{
+    agent any
+    stages{
+        stage("compilePhase"){
+            steps{
+                bat """
+                	cd movie-backend
+			cd auth-service
+                	mvn compile
+        		"""
+  		bat """
+                	cd movie-backend
+			cd customer-service
+                	mvn compile
+        		"""
+  		bat """
+                	cd movie-backend
+			cd signup-service
+                	mvn compile
+        		"""
+                }
+            }
+
+        stage("testPhase"){
+            steps{
+                bat """
+                	cd movie-backend
+			cd auth-service
+                	mvn test
+        		"""
+                }
+        }
+
+        stage("packagePhase"){
+        steps{
+           bat """
+                	cd movie-backend
+			cd auth-service
+                	mvn clean package
+        		"""
+                }
+            }
+        }
+}

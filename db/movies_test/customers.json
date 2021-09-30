@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "614b49e438ab2d2d4baa5fc6"
+  },
+  "username": "siddharth.garg",
+  "name": "Siddharth Garg",
+  "email": "4ssiddharth@gmail.com",
+  "password": "$2a$10$IkkrOSazVQGI7Ujx/HqX1OLgazEQ.H8wgkwEUDdoXlKy6AShFz0bK",
+  "roles": [
+    "USER"
+  ],
+  "_class": "com.brillio.auth.model.Customer"
+},{
+  "_id": {
+    "$oid": "614b4f0f60067404554ed4b9"
+  },
+  "username": "siddharth.garg1231",
+  "name": "Siddharth Gar sag",
+  "email": "4ssiddharth@gmail.conm",
+  "password": "$2a$10$WytY7Ku9vtdPXVAoWFwNOOx08mxMSeDcGO86JXEh2Hkembz6VPaDG",
+  "roles": [
+    "USER"
+  ],
+  "_class": "com.brillio.auth.model.Customer"
+},{
+  "_id": {
+    "$oid": "614b501d60067404554ed4ba"
+  },
+  "username": "siddharth.garg12311232",
+  "name": "Siddharth Gar sag",
+  "email": "4ssiddharth@gmail.conm",
+  "password": "$2a$10$H93tcBw5za7aQgvfyXqLbuHS1TDyExEC7OoGrophAElBOGmncvBna",
+  "roles": [
+    "USER"
+  ],
+  "_class": "com.brillio.auth.model.Customer"
+}]
