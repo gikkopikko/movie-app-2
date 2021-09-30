@@ -5,6 +5,7 @@ import "./App.css";
 
 import AuthService from "./services/auth.service";
 
+import MovieDesc from "./components/MovieDescription";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
@@ -14,7 +15,6 @@ import BoardUser from "./components/board-user.component";
 
 // import AuthVerify from "./common/auth-verify";
 import EventBus from "./common/EventBus";
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -62,12 +62,13 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
+
             <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Profile} />
             <Route path="/user" component={BoardUser} />
-            
+            <Route path="/movie_desc" component={MovieDesc} />
           </Switch>
         </div>
 
