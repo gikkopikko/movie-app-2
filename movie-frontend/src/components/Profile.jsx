@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import "../css/profile.css";
+// import "../css/profile.css";
 
 class Profile extends Component {
   state = {
     userData: [],
-    columns: [
-      { dataField: "sid", text: "Id", sort: true },
-      { dataField: "fname", text: "First Name", sort: true },
-      { dataField: "address", text: "Address", sort: true },
-    ],
+    // columns: [
+    //   { dataField: "sid", text: "Id", sort: true },
+    //   { dataField: "fname", text: "First Name", sort: true },
+    //   { dataField: "address", text: "Address", sort: true },
+    // ],
   };
   render() {
     return (
