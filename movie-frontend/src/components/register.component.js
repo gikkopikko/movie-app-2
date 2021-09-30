@@ -42,7 +42,9 @@ const vname = value => {
  
     return (
       <div className="alert alert-danger" role="alert">
-        The password must only contain alphabets.
+
+        The Name must only contain alphabets.
+
       </div>
     );
   }

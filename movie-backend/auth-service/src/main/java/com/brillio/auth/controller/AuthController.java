@@ -22,7 +22,9 @@ import com.brillio.auth.payload.LoginRequest;
 import com.brillio.auth.security.CurrentUser;
 import com.brillio.auth.security.JwtTokenProvider;
 import com.brillio.auth.security.UserPrincipal;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @RestController
 @CrossOrigin
 //@RequestMapping("/api/auth")
