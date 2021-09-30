@@ -37,6 +37,11 @@ public class MovieController {
 
 	}
 
+	@GetMapping("/movies/category/{category}")
+	public List<Movie> getMoviesByCategory(@PathVariable String category){
+		return movieRepository.findAllByCategory(category);
+	}
+
 	@PutMapping("/setoccupied/{movieId}")
 	public ResponseEntity<?> setOccupiedSeats(@PathVariable String movieId,
 			@RequestBody SetOccupiedRequest setOccupiedRequest) {
