@@ -1,16 +1,22 @@
 import React from 'react';
+import axios from "axios";
 
 export default class MovieBooking extends React.Component{
     constructor(props){
         super(props);
     }
 
-    deleteBooking = () => {
-        fetch('http://localhost:9091/booking/delete/'+this.props.data.id, {
+    deleteBooking = (id) => {
+         fetch('localhost:9091/booking/delete/'+id, {
             method: 'DELETE',
-            })
-            .then(res => res.text())
-            .then(res => console.log(res));
+           })
+           .then(res => res.text())
+           .then(res => console.log(res))
+           .catch((error) => {
+            console.log(error);
+          });
+           
+        
     }
 
     render(){
@@ -21,7 +27,7 @@ export default class MovieBooking extends React.Component{
                 <p>Seats Booked: {this.props.data.seatsBooked}</p>
                 <p>Number of Seats Booked: {this.props.data.numberOfSeats}</p>
                 <p>Amount Paid: {this.props.data.amountPaid}</p>
-                <button className="profile-button" onClick={this.deleteBooking}>Cancel</button>
+                <button className="profile-button" onClick={this.deleteBooking(this.props.data.id)}>Cancel</button>
           </div>
         );
     }

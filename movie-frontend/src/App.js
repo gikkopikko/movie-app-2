@@ -3,6 +3,7 @@ import { withRouter, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
+import "./css/main.css";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
@@ -10,10 +11,9 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 
 import { getCurrentUser } from "../src/common/api-utils";
-import C1 from "./components/C1";
-import C3 from "./components/C3";
 import SeatBooking from "./components/SeatBooking";
-import Profile2 from "./components/Profile2";
+
+import MovieDesc from "./components/MovieDescription";
 
 class App extends Component {
   constructor(props) {
@@ -84,21 +84,22 @@ class App extends Component {
                 <Login onLogin={this.handleLogin} {...props} />
               )}
             ></Route>
-            <Route exact path="/component1" component={C1} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/component3" component={C3} />
+            <Route exact path="/home" component={Home} />
             <Route
               path="/seatbooking/:movieId"
               render={(props) => (
                 <SeatBooking currentUser={this.currentUser} {...props} />
               )}
             ></Route>
+
             <Route
               path="/profile"
               render={(props) => (
-                <Profile2 currentUser={this.currentUser} {...props} />
+                <Profile currentUser={this.currentUser} {...props} />
               )}
             ></Route>
+            <Route path="/movie/:id" component={MovieDesc} />
           </Switch>
         </div>
 

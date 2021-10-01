@@ -13,6 +13,7 @@ export default class SeatBooking extends Component {
     super(props);
     this.state = {
       movieName: "",
+
       movieId: this.props.match.params.movieId,
       moviePrice: "0",
       selected: [],
@@ -51,8 +52,10 @@ export default class SeatBooking extends Component {
       })
       .catch((error) => console.log(error));
   }
+
   seatClick = (i, e) => {
     const seatno = i;
+    console.log(seatno);
     if (this.state.selected.includes(seatno)) {
       const index = this.state.selected.indexOf(seatno);
       const selected2 = [...this.state.selected];
@@ -70,6 +73,7 @@ export default class SeatBooking extends Component {
   };
 
   seatClass = (seatNo) => {
+    console.log(seatNo);
     let isOccupied = this.state.occupied.includes(seatNo);
     let isAlreadyBooked = this.state.alreadyBooked.includes(seatNo);
     let isSelected = this.state.selected.includes(seatNo);
@@ -102,7 +106,6 @@ export default class SeatBooking extends Component {
     return (
       <div className="seats-booking-body">
         <div className="movie-container">
-          {/* <label>Pick a movie:</label> */}
           <select id="movie">
             <option value="12">
               {this.state.movieName + " $" + this.state.moviePrice}
