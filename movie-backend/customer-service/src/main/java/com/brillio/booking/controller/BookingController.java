@@ -21,6 +21,7 @@ import org.springframework.web.client.RestTemplate;
 import com.brillio.auth.repository.CustomerBookingRepository;
 import com.brillio.auth.repository.CustomerRepository;
 import com.brillio.booking.model.CustomerBooking;
+import com.brillio.booking.payload.ApiResponse;
 import com.brillio.booking.payload.BookingRequest;
 import com.brillio.booking.model.Customer;
 
@@ -64,7 +65,7 @@ public class BookingController {
 	}
 
 	@PostMapping("/current/book")
-	public String insertStudent(@RequestBody BookingRequest bookingRequest) {
+	public ResponseEntity<?> createBooking(@RequestBody BookingRequest bookingRequest) {
 		try {
 			RestTemplate template = new RestTemplate();
 			String amountPaid;
@@ -98,12 +99,19 @@ public class BookingController {
 			newCustomerBooking.setAmountPaid(amountPaid);
 
 			customerBookingRepository.save(newCustomerBooking);
-			return ("Data is inserted " + amountPaid);
+			return ResponseEntity.ok(new ApiResponse(true,"Booking created. Total amount paid: "+amountPaid));
 
 		} catch (Exception e) {
-			return (e.getMessage());
+			return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),HttpStatus.BAD_REQUEST);
 		}
 
+	}
+	@GetMapping("/booking/{username}/{movieId}")
+	public ResponseEntity<?> getBookingDetails(@PathVariable String username,@PathVariable String movieId) {
+		Optional<CustomerBooking> customerBooking= customerBookingRepository.findByUsernameAndMovieId(username, movieId);
+		if(customerBooking.isEmpty())
+			return  new ResponseEntity<Object>("booking not found", HttpStatus.NOT_FOUND);
+		return ResponseEntity.ok(customerBooking.get());
 	}
 
 

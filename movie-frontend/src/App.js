@@ -13,6 +13,7 @@ import { getCurrentUser } from "../src/common/api-utils";
 import C1 from "./components/C1";
 import C3 from "./components/C3";
 import SeatBooking from "./components/SeatBooking";
+import Profile2 from "./components/Profile2";
 
 class App extends Component {
   constructor(props) {
@@ -90,6 +91,12 @@ class App extends Component {
               path="/seatbooking/:movieId"
               render={(props) => (
                 <SeatBooking currentUser={this.currentUser} {...props} />
+              )}
+            ></Route>
+            <Route
+              path="/profile"
+              render={(props) => (
+                <Profile2 currentUser={this.currentUser} {...props} />
               )}
             ></Route>
           </Switch>

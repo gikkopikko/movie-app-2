@@ -51,3 +51,26 @@ export function getCurrentUser() {
     method: "GET",
   });
 }
+
+export function getBookingDetails(bookingDetailsRequest) {
+  return request({
+    url:
+      API_BASE_URL +
+      `/customer-service/booking/${bookingDetailsRequest.username}/${bookingDetailsRequest.movieId}`,
+    method: "GET",
+  });
+}
+export function getMovieDetails(movieId) {
+  return request({
+    url: API_BASE_URL + `/movie-service/movies/${movieId}`,
+    method: "GET",
+  });
+}
+
+export function createBooking(bookingRequest) {
+  return request({
+    url: API_BASE_URL + "/customer-service/current/book",
+    method: "POST",
+    body: JSON.stringify(bookingRequest),
+  });
+}

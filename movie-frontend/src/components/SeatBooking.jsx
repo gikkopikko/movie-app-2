@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import "../css/seatbooking.css";
+import {
+  getBookingDetails,
+  getMovieDetails,
+  createBooking,
+} from "../common/api-utils";
 
 const rows = [0, 1, 2, 3, 4, 5];
 const cols = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -8,8 +13,8 @@ export default class SeatBooking extends Component {
     super(props);
     this.state = {
       movieName: "",
-      movieId: "",
-      moviePrice: 0,
+      movieId: this.props.match.params.movieId,
+      moviePrice: "0",
       selected: [],
       occupied: [],
       alreadyBooked: [],
@@ -17,14 +22,34 @@ export default class SeatBooking extends Component {
   }
   componentDidMount() {
     this.setState({
-      movieName: "sapidjp",
-      movieId: "dsadasd",
       moviePrice: 0,
-      selected: [5],
+      selected: [],
       occupied: [1, 2, 3, 4, 10, 15, 17, 19],
-      alreadyBooked: [1, 2, 3, 4],
     });
-    console.log(this.props.match.params.movieId);
+    // console.log(this.props.match.params.movieId);
+    const bookingDetailsRequest = {
+      username: "siddharth.garg",
+      movieId: this.state.movieId,
+    };
+
+    getMovieDetails(this.state.movieId)
+      .then((response) => {
+        this.setState({
+          occupied: response.occupiedSeats,
+          movieName: response.movieName,
+          moviePrice: response.price,
+        });
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+    getBookingDetails(bookingDetailsRequest)
+      .then((response) => {
+        this.setState({
+          alreadyBooked: response.seatsBooked,
+        });
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
   }
   seatClick = (i, e) => {
     const seatno = i;
@@ -53,14 +78,35 @@ export default class SeatBooking extends Component {
     else if (isSelected) return "selected";
   };
 
-  handleBooking = (e) => {};
+  handleBooking = (e) => {
+    const bookingRequest = {
+      username: "siddharth.garg",
+      movieId: this.state.movieId,
+      movieName: this.state.movieName,
+      selected: this.state.selected,
+    };
+    createBooking(bookingRequest)
+      .then((response) => {
+        alert(response.message);
+        console.log(response);
+        setInterval(() => {
+          this.props.history.push("/profile");
+        }, 1000);
+      })
+      .catch((error) => {
+        alert(error.message);
+        console.log(error);
+      });
+  };
   render() {
     return (
       <div className="seats-booking-body">
         <div className="movie-container">
           {/* <label>Pick a movie:</label> */}
           <select id="movie">
-            <option value="12">Joker ($12)</option>
+            <option value="12">
+              {this.state.movieName + " $" + this.state.moviePrice}
+            </option>
           </select>
         </div>
 
@@ -107,9 +153,14 @@ export default class SeatBooking extends Component {
 
         <p className="text">
           You have selected <span id="count">{this.state.selected.length}</span>{" "}
-          seats for a price of $<span id="total">0</span>
+          seats for a price of $
+          <span id="total">
+            {this.state.selected.length * Number(this.state.moviePrice)}
+          </span>
         </p>
-        <button onClick={this.handleBooking}>BOOK</button>
+        <button className="seat-booking-btn" onClick={this.handleBooking}>
+          BOOK
+        </button>
       </div>
     );
   }
