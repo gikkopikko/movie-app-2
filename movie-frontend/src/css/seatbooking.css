@@ -1,17 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=K2D&display=swap");
 .seats-booking-body * {
   box-sizing: border-box;
+  font-family: "K2D", sans-serif;
 }
 
 .seats-booking-body {
+  text-align: center;
   background-color: #242333;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   font-family: "Lato", sans-serif;
   margin: 0;
+  min-width: 100vw;
 }
 
 .movie-container {
@@ -40,24 +44,24 @@
   background-color: #444451;
   height: 22px;
   width: 28px;
-  margin: 7px 9px;
+  margin: 7px 7px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: rgb(21, 204, 128);
   padding-left: 0;
   padding-right: 0;
-  padding-top: 2px;
+  /* padding-top: 2px; */
 }
 
 .seat.selected {
   background-color: #0cc915;
-  color: rgb(59, 39, 39);
+  color: rgb(255, 255, 255);
 }
 
 .seat.occupied {
   background-color: #fff;
-  cursor: not-allowed;
   pointer-events: none;
+  cursor: not-allowed;
 }
 .seat.already-booked {
   background-color: #6feaf6;
@@ -120,10 +124,23 @@
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
 }
 
-p.text {
+p.seat-bookng-text {
   margin: 5px 0;
 }
 
-p.text span {
+p.seat-bookng-text span {
   color: #6feaf6;
+}
+
+.seat-booking-btn {
+  margin-top: 10px;
+  padding: 4px 15px;
+  font-size: 1.5rem;
+  color: white;
+  background-color: inherit;
+  border: 3px solid white;
+}
+.seat-booking-btn:hover {
+  color: #242333;
+  background-color: white;
 }

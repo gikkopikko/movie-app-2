@@ -1,85 +1,152 @@
 import React, { Component } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { withRouter, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import "./css/main.css";
-import "./css/Register.css";
+// import "./App.css";
 
-
-import AuthService from "./services/auth.service";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
-
 import Profile from "./components/Profile";
 
+import { getCurrentUser, logout } from "../src/common/api-utils";
+import SeatBooking from "./components/SeatBooking";
 
-// import AuthVerify from "./common/auth-verify";
-import EventBus from "./common/EventBus";
+import MovieDesc from "./components/MovieDescription";
+import { assertThisExpression, thisExpression } from "@babel/types";
+
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.logOut = this.logOut.bind(this);
 
     this.state = {
-      
-      currentUser: undefined,
+      currentUser: null,
+      isAuthenticated: false,
+      isLoading: false,
     };
   }
-
-  componentDidMount() {
-    const user = AuthService.getCurrentUser();
-
-    if (user) {
-      this.setState({
-        currentUser: user,
-       
-      });
-    }
-    
-    EventBus.on("logout", () => {
-      this.logOut();
-    });
-  }
-
-  componentWillUnmount() {
-    EventBus.remove("logout");
-  }
-
-  logOut() {
-    AuthService.logout();
+  loadCurrentUser = () => {
     this.setState({
-      
-      currentUser: undefined,
+      isLoading: true,
     });
+    getCurrentUser()
+      .then((response) => {
+        this.setState({
+          currentUser: response,
+          isAuthenticated: true,
+          isLoading: false,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          isLoading: false,
+        });
+      });
+  };
+
+  handleLogin = () => {
+    alert("successfull login");
+    this.loadCurrentUser();
+    this.props.history.push("/component3");
+  };
+  componentDidMount() {
+    this.loadCurrentUser();
   }
+
+
+  
 
   render() {
-    const { currentUser} = this.state;
 
     return (
       <div>
-      
+        <div className="">
+          <header>
+            <div className="left">
+              <Link to={"/"} className="navbar-brand">
+                Movie App
+              </Link>
+            </div>
 
-        <div className="container mt-3">
+            
+            <div className="holder">
+              {this.state.currentUser ? (
+                <div className="right">
+                <div className="item">
+                    <Link to={"/home"} className="nav-link">
+                      Home
+                    </Link>
+                  </div>
+
+                  <div className="item">
+                    <Link to={"/profile"} className="nav-link">
+                      {this.state.currentUser.username}
+                    </Link>
+                  </div>
+                  <div className="item">
+                    <a href="/login" className="nav-link" onClick={logout}>
+                      LogOut
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div className="right">
+                <div className="item">
+                    <Link to={"/login"} className="nav-link">
+                      Login
+                    </Link>
+                </div>
+
+                <div className="item">
+                    <Link to={"/register"} className="nav-link">
+                      Sign Up
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+           
+          </header>
           <Switch>
-
-            <Route exact path={["/", "/home"]} component={Home} />
-            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/login"
+              render={(props) => (
+                <Login onLogin={this.handleLogin} {...props} />
+              )}
+            ></Route>
             <Route exact path="/register" component={Register} />
-            <Route exact path="/profile" component={Profile} />
-            
+            {/* <Route exact path="/home" component={Home} /> */}
+            <Route
+              path="/seatbooking/:movieId"
+              render={(props) => (
+                <SeatBooking currentUser={this.state.currentUser} {...props} />
+              )}
+            ></Route>
 
-            
+            <Route
+              path="/profile"
+              render={(props) => (
+                <Profile currentUser={this.state.currentUser} {...props} />
+              )}
+            ></Route>
+            <Route path="/movie/:id" component={MovieDesc} />
+            <Route
+              exact
+              path="/home"
+              render={(props) => (
+                <Home currentUser={this.state.currentUser} {...props} />
+              )}
+            ></Route>
           </Switch>
         </div>
 
-        { /*<AuthVerify logOut={this.logOut}/> */ }
+        {/*<AuthVerify logOut={this.logOut}/> */}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
