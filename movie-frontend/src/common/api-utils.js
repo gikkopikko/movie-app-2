@@ -69,6 +69,15 @@ export function getMovieDetails(movieId) {
 }
 
 export function createBooking(bookingRequest) {
+  const occupiedRequest = {
+    selected: bookingRequest.selected,
+  };
+  request({
+    url: API_BASE_URL + "/movie-service/setoccupied/" + bookingRequest.movieId,
+    method: "PUT",
+    body: JSON.stringify(occupiedRequest),
+  });
+
   return request({
     url: API_BASE_URL + "/customer-service/current/book",
     method: "POST",
