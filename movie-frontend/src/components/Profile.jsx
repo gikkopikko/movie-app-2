@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import axios from "axios";
-import { Form, Table } from "react-bootstrap";
 import "../css/profile.css";
 
 import MovieBooking from "./MovieBooking";

@@ -84,3 +84,7 @@ export function createBooking(bookingRequest) {
     body: JSON.stringify(bookingRequest),
   });
 }
+
+export function logout(){
+  localStorage.removeItem(ACCESS_TOKEN);
+}

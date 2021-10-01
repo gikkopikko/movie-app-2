@@ -3,23 +3,20 @@ import { withRouter, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
-import "./css/main.css";
 
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-// import Profile from "./components/profile.component";
-import { getCurrentUser } from "../src/common/api-utils";
+
+import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
 import MovieDesc from "./components/MovieDescription";
-import { assertThisExpression, thisExpression } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.logOut = this.logOut.bind(this);
 
     //   this.state = {
     //     currentUser: undefined,
@@ -60,24 +57,54 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-  componentWillUnmount() {
-    // EventBus.remove("logout");
-  }
-
-  // logOut() {
-  //   AuthService.logout();
-  //   this.setState({
-  //     currentUser: undefined,
-  //   });
-  // }
-
   render() {
-    // const { currentUser } = this.state;
-    const { currentUser } = this.state;
     return (
       <div>
         <div className="">
-          <header></header>
+          <header>
+            <div className="left">
+              <Link to={"/"} className="navbar-brand">
+                Movie App
+              </Link>
+            </div>
+
+            <div className="holder">
+              {this.state.currentUser ? (
+                <div className="right">
+                  <div className="item">
+                    <Link to={"/home"} className="nav-link">
+                      Home
+                    </Link>
+                  </div>
+
+                  <div className="item">
+                    <Link to={"/profile"} className="nav-link">
+                      {this.state.currentUser.username}
+                    </Link>
+                  </div>
+                  <div className="item">
+                    <a href="/login" className="nav-link" onClick={logout}>
+                      LogOut
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div className="right">
+                  <div className="item">
+                    <Link to={"/login"} className="nav-link">
+                      Login
+                    </Link>
+                  </div>
+
+                  <div className="item">
+                    <Link to={"/register"} className="nav-link">
+                      Sign Up
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+          </header>
           <Switch>
             <Route
               exact
@@ -87,8 +114,7 @@ class App extends Component {
               )}
             ></Route>
             <Route exact path="/register" component={Register} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/profile" component={Profile} />
+            {/* <Route exact path="/home" component={Home} /> */}
             <Route
               path="/seatbooking/:movieId"
               render={(props) => (
