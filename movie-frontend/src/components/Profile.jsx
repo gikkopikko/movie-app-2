@@ -1,41 +1,49 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 import "../css/profile.css";
+import MovieBooking from "./MovieBooking";
 
 class Profile extends Component {
-  state = {
-    userData: [],
-    columns: [
-      { dataField: "sid", text: "Id", sort: true },
-      { dataField: "fname", text: "First Name", sort: true },
-      { dataField: "address", text: "Address", sort: true },
-    ],
-  };
+  constructor(props){
+    super(props);
+
+    this.state = {
+      name : "",
+      userName : "",
+      email : "",
+      movieBookings : []
+    }
+  }
+
+
+  async componentDidMount(){
+    try{
+      let data = await fetch("http://localhost:9091/users/siddharth.garg");
+      data = await data.json();
+      this.setState({
+        name : data.name,
+        userName : data.username,
+        email :  data.email
+      })
+
+      let bookings = await fetch("http://localhost:9091/bookings/"+this.state.userName);
+      bookings = await bookings.json();
+      this.setState({movieBookings : bookings})
+    }
+    catch(err){console.log(err)};
+  }
+
   render() {
     return (
       <div>
         <div className="profile-container">
-          <p>Name: Alankrita Patel</p>
-          <p>UserName: Alankrita.Patel</p>
-          <p>Email: Alankrita.Patel@brillio.com</p>
+          <p>Name: {this.state.name}</p>
+          <p>UserName: {this.state.userName}</p>
+          <p>Email: {this.state.email}</p>
 
-          <div className="profile-inner-container">
-            <p>Booking Id: addfs</p>
-            <p>Movie: movie Name</p>
-            <p>Seats Booked: addfs</p>
-            <p>Number of Seats Booked: addfs</p>
-            <p>Amount Paid: $50</p>
-            <button className="profile-button">Cancel</button>
-          </div>
 
-          <div className="profile-inner-container">
-            <p>Booking Id: addfs</p>
-            <p>Movie: movie Name</p>
-            <p>Seats Booked: addfs</p>
-            <p>Number of Seats Booked: addfs</p>
-            <p>Amount Paid: $50</p>
-            <button className="profile-button">Cancel</button>
-          </div>
+          {this.state.movieBookings.map((booking) => {return <MovieBooking data={booking}/>})}
+          
         </div>
       </div>
     );
