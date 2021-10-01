@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,33 +27,21 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin
 @RestController
+@CrossOrigin
+
 //@RequestMapping("/api/auth")
 public class SignUpController {
 
-//	@Autowired
-//	AuthenticationManager authenticationManager;
+
 
 	@Autowired
 	CustomerRepository customerRepository;
 
-//	@Autowired
-//	PasswordEncoder passwordEncoder;
+
 	
 	BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
 
-//	@Autowired
-//	JwtTokenProvider tokenProvider;
 
-//	@PostMapping("/login")
-//	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
-//
-////		Authentication authentication = authenticationManager.authenticate(
-////				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-//
-////		SecurityContextHolder.getContext().setAuthentication(authentication);
-//		String jwt = tokenProvider.generateToken(loginRequest.getUsername());
-//		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
-//	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {

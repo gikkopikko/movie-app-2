@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { Table } from "react-bootstrap";
+
+import axios from "axios";
+import { Form, Table } from "react-bootstrap";
 import "../css/profile.css";
+
 import MovieBooking from "./MovieBooking";
 
 class Profile extends Component {
@@ -33,17 +36,19 @@ class Profile extends Component {
     catch(err){console.log(err)};
   }
 
+
   render() {
     return (
       <div>
         <div className="profile-container">
+      
           <p>Name: {this.state.name}</p>
           <p>UserName: {this.state.userName}</p>
           <p>Email: {this.state.email}</p>
 
 
           {this.state.movieBookings.map((booking) => {return <MovieBooking data={booking}/>})}
-          
+
         </div>
       </div>
     );
