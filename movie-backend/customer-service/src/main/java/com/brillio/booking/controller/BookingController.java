@@ -7,9 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.brillio.auth.repository.CustomerBookingRepository;
 import com.brillio.auth.repository.CustomerRepository;
 import com.brillio.booking.model.CustomerBooking;
@@ -17,7 +15,7 @@ import com.brillio.booking.model.Customer;
 
 
 @RestController
-
+@CrossOrigin
 public class BookingController {
 
 @Autowired
@@ -33,8 +31,13 @@ CustomerRepository customerRepository;
 		return ResponseEntity.ok(customerBookings);
 	
 	}
-	
-	
+
+	@DeleteMapping("booking/delete/{id}")
+	public ResponseEntity<String> deleteBooking(@PathVariable String id){
+		customerBookingRepository.deleteById(id);
+		return new ResponseEntity<>("Deleted succesfully", HttpStatus.OK);
+	}
+
 	@GetMapping("/users")
 	public ResponseEntity<?> getAllCustomers() {
 		List<Customer> customer= customerRepository.findAll();
