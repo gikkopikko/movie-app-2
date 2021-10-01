@@ -30,10 +30,9 @@ public class BookingRequest {
 	public List<Integer> getSelected() {
 		return selected;
 	}
-	public void setSelected(List<Integer> selected) {
+	public void setSelectedd(List<Integer> selected) {
 		this.selected = selected;
 	}
-
 
 	
 }

@@ -21,7 +21,7 @@ class Profile extends Component {
 
   async componentDidUpdate(){
     try{
-      let data = await fetch("http://localhost:9091/users/siddharth.garg");
+      let data = await fetch("http://localhost:9091/users/Alankrita");
       data = await data.json();
       this.setState({
         name : data.name,

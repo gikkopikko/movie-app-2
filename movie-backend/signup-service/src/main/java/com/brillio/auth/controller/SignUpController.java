@@ -26,21 +26,35 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 @CrossOrigin
-
+@RestController
 
 //@RequestMapping("/api/auth")
 public class SignUpController {
 
-
+//	@Autowired
+//	AuthenticationManager authenticationManager;
 
 	@Autowired
 	CustomerRepository customerRepository;
 
-
+//	@Autowired
+//	PasswordEncoder passwordEncoder;
 	
 	BCryptPasswordEncoder passwordEncoder= new BCryptPasswordEncoder();
 
+//	@Autowired
+//	JwtTokenProvider tokenProvider;
 
+//	@PostMapping("/login")
+//	public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
+//
+////		Authentication authentication = authenticationManager.authenticate(
+////				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+//
+////		SecurityContextHolder.getContext().setAuthentication(authentication);
+//		String jwt = tokenProvider.generateToken(loginRequest.getUsername());
+//		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+//	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
