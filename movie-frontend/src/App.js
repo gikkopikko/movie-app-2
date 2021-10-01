@@ -37,6 +37,7 @@ class App extends Component {
     });
     getCurrentUser()
       .then((response) => {
+        // console.log(response);
         this.setState({
           currentUser: response,
           isAuthenticated: true,
@@ -72,11 +73,11 @@ class App extends Component {
 
   render() {
     // const { currentUser } = this.state;
-
+    const { currentUser } = this.state;
     return (
       <div>
         <div className="">
-          <header>aaaa</header>
+          <header></header>
           <Switch>
             <Route
               exact
@@ -93,7 +94,6 @@ class App extends Component {
                 <SeatBooking currentUser={this.state.currentUser} {...props} />
               )}
             ></Route>
-
             <Route
               path="/profile"
               render={(props) => (

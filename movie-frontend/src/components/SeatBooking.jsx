@@ -4,6 +4,7 @@ import {
   getBookingDetails,
   getMovieDetails,
   createBooking,
+  getCurrentUser,
 } from "../common/api-utils";
 
 const rows = [0, 1, 2, 3, 4, 5];
@@ -20,32 +21,34 @@ export default class SeatBooking extends Component {
       alreadyBooked: [],
     };
   }
+
   componentDidMount() {
     this.setState({
       moviePrice: 0,
       selected: [],
       occupied: [1, 2, 3, 4, 10, 15, 17, 19],
     });
-    // console.log(this.props.match.params.movieId);
-    const bookingDetailsRequest = {
-      username: "siddharth.garg",
-      movieId: this.state.movieId,
-    };
-
+    getCurrentUser()
+      .then((response) => {
+        const bookingDetailsRequest = {
+          username: response.username,
+          movieId: this.state.movieId,
+        };
+        return getBookingDetails(bookingDetailsRequest);
+      })
+      .then((response) => {
+        this.setState({
+          alreadyBooked: response.seatsBooked,
+        });
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
     getMovieDetails(this.state.movieId)
       .then((response) => {
         this.setState({
           occupied: response.occupiedSeats,
           movieName: response.movieName,
           moviePrice: response.price,
-        });
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
-    getBookingDetails(bookingDetailsRequest)
-      .then((response) => {
-        this.setState({
-          alreadyBooked: response.seatsBooked,
         });
         console.log(response);
       })
