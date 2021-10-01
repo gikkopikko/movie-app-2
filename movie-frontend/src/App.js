@@ -9,12 +9,12 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-
+// import Profile from "./components/profile.component";
 import { getCurrentUser } from "../src/common/api-utils";
-import C1 from "./components/C1";
-import C3 from "./components/C3";
 import SeatBooking from "./components/SeatBooking";
+
 import MovieDesc from "./components/MovieDescription";
+import { assertThisExpression, thisExpression } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
@@ -85,17 +85,29 @@ class App extends Component {
                 <Login onLogin={this.handleLogin} {...props} />
               )}
             ></Route>
-            <Route exact path="/component1" component={C1} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/component3" component={C3} />
             <Route exact path="/home" component={Home} />
             <Route
               path="/seatbooking/:movieId"
               render={(props) => (
-                <SeatBooking currentUser={this.currentUser} {...props} />
+                <SeatBooking currentUser={this.state.currentUser} {...props} />
+              )}
+            ></Route>
+
+            <Route
+              path="/profile"
+              render={(props) => (
+                <Profile currentUser={this.state.currentUser} {...props} />
               )}
             ></Route>
             <Route path="/movie/:id" component={MovieDesc} />
+            <Route
+              exact
+              path="/home"
+              render={(props) => (
+                <Home currentUser={this.state.currentUser} {...props} />
+              )}
+            ></Route>
           </Switch>
         </div>
 
