@@ -11,6 +11,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +22,7 @@ import org.springframework.web.client.RestTemplate;
 import com.brillio.auth.repository.CustomerBookingRepository;
 import com.brillio.auth.repository.CustomerRepository;
 import com.brillio.booking.model.CustomerBooking;
-import com.brillio.booking.payload.SignUpRequest;
+import com.brillio.booking.payload.BookingRequest;
 import com.brillio.booking.model.Customer;
 
 
@@ -45,6 +46,11 @@ public class BookingController {
 	
 	}
 	
+	@DeleteMapping("booking/delete/{id}")
+	public ResponseEntity<String> deleteBooking(@PathVariable String id){
+		customerBookingRepository.deleteById(id);
+		return new ResponseEntity<>("Deleted succesfully", HttpStatus.OK);
+	}
 	
 	@GetMapping("/users")
 	public ResponseEntity<?> getAllCustomers() {
@@ -61,36 +67,47 @@ public class BookingController {
 	
 	}
 	
-	
 
-    @PostMapping("/current/book")
-    public String insertStudent(@RequestBody SignUpRequest signUpRequest){
-        try {RestTemplate template = new RestTemplate();
-             String amountPaid;
-             HttpHeaders headers = new HttpHeaders();
-             HttpEntity<String> entity = new HttpEntity<String>(headers);
-        	ResponseEntity<String> response = template.exchange(url+signUpRequest.getMovieId(), HttpMethod.GET, entity, String.class);
-        	String price = response.getBody();
-        	
-        	double movie_price = Double.parseDouble(price);
-        	double amount = signUpRequest.getSeatsBooked().size() * movie_price;
-        	
-        	
-        	amountPaid = Double.toString(amount);       	
-        	
-        	CustomerBooking customerBooking = new CustomerBooking(signUpRequest.getUsername(), signUpRequest.getMovieId(),
-    				signUpRequest.getMovieName(),signUpRequest.getSeatsBooked(),amountPaid);
-        	
-        	
-            customerBookingRepository.save(customerBooking);
-            return("Data is inserted "+ amountPaid );
-        
-        	
-        }catch(Exception e){
-            return (e.getMessage());
-        }
+	@PostMapping("/current/book")
+	public String insertCustomerBooking(@RequestBody BookingRequest bookingRequest) {
+		try {
+			RestTemplate template = new RestTemplate();
+			String amountPaid;
+			HttpHeaders headers = new HttpHeaders();
+			HttpEntity<String> entity = new HttpEntity<String>(headers);
+			ResponseEntity<String> response = template.exchange(url + bookingRequest.getMovieId(), HttpMethod.GET,
+					entity, String.class);
+			String price = response.getBody();
+			double movie_price = Double.parseDouble(price);
 
-    }
+			Optional<CustomerBooking> customerBooking = customerBookingRepository
+					.findByUsernameAndMovieId(bookingRequest.getUsername(), bookingRequest.getMovieId());
+			
+			CustomerBooking newCustomerBooking;
+			
+			if (customerBooking.isEmpty()) {
+				newCustomerBooking = new CustomerBooking(bookingRequest.getUsername(), bookingRequest.getMovieId(),
+						bookingRequest.getMovieName(), bookingRequest.getSelected(), "0");
+			} else {
+
+				newCustomerBooking = customerBooking.get();
+				List<Integer> newSeatsBooked = newCustomerBooking.getSeatsBooked();
+				newSeatsBooked.addAll(bookingRequest.getSelected());
+				newCustomerBooking.setSeatsBooked(newSeatsBooked);
+			}
+			
+			double amount = newCustomerBooking.getSeatsBooked().size() * movie_price;
+			amountPaid = Double.toString(amount);
+			newCustomerBooking.setAmountPaid(amountPaid);
+
+			customerBookingRepository.save(newCustomerBooking);
+			return ("Data is inserted " + amountPaid);
+
+		} catch (Exception e) {
+			return (e.getMessage());
+		}
+
+	}
 
 //	@PostMapping("/signup")
 //	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {

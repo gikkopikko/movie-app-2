@@ -2,12 +2,12 @@ package com.brillio.booking.payload;
 
 import java.util.List;
 
-public class SignUpRequest {
+public class BookingRequest {
 
 	private String username;
 	private String movieId;
 	private String movieName;
-	private List<Integer> seatsBooked;
+	private List<Integer> selected;
 	
 	public String getUsername() {
 		return username;
@@ -27,11 +27,11 @@ public class SignUpRequest {
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
 	}
-	public List<Integer> getSeatsBooked() {
-		return seatsBooked;
+	public List<Integer> getSelected() {
+		return selected;
 	}
-	public void setSeatsBooked(List<Integer> seatsBooked) {
-		this.seatsBooked = seatsBooked;
+	public void setSelectedd(List<Integer> selected) {
+		this.selected = selected;
 	}
 
 	
