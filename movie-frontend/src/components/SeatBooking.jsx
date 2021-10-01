@@ -13,7 +13,6 @@ export default class SeatBooking extends Component {
     super(props);
     this.state = {
       movieName: "",
-
       movieId: this.props.match.params.movieId,
       moviePrice: "0",
       selected: [],
@@ -55,7 +54,6 @@ export default class SeatBooking extends Component {
 
   seatClick = (i, e) => {
     const seatno = i;
-    console.log(seatno);
     if (this.state.selected.includes(seatno)) {
       const index = this.state.selected.indexOf(seatno);
       const selected2 = [...this.state.selected];
@@ -73,7 +71,6 @@ export default class SeatBooking extends Component {
   };
 
   seatClass = (seatNo) => {
-    console.log(seatNo);
     let isOccupied = this.state.occupied.includes(seatNo);
     let isAlreadyBooked = this.state.alreadyBooked.includes(seatNo);
     let isSelected = this.state.selected.includes(seatNo);
@@ -142,7 +139,6 @@ export default class SeatBooking extends Component {
                     <div
                       className={"seat " + this.seatClass(8 * row + col)}
                       onClick={(e) => this.seatClick(8 * row + col, e)}
-                      // seatno={8 * row+col}
                       key={"seat-" + 8 * row + col}
                     >
                       {8 * row + col}
@@ -154,7 +150,7 @@ export default class SeatBooking extends Component {
           })}
         </div>
 
-        <p className="text">
+        <p className="seat-bookng-text">
           You have selected <span id="count">{this.state.selected.length}</span>{" "}
           seats for a price of $
           <span id="total">

@@ -6,9 +6,9 @@ import CheckButton from "react-validation/build/button";
 
 // import { input } from "react-validation/build/input";
 // import { form } from "react-validation/build/form";
-
 import AuthService from "../services/auth.service";
-
+import { login } from "../common/api-utils";
+const ACCESS_TOKEN = "accessToken";
 const required = (value) => {
   if (!value) {
     return (
@@ -57,25 +57,33 @@ export default class Login extends Component {
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
-        () => {
-          this.props.history.push("/profile");
-          window.location.reload();
-        },
-        (error) => {
+      const loginRequest = {
+        username: this.state.username,
+        password: this.state.password,
+      };
+      login(loginRequest)
+        .then((response) => {
+          localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+          this.props.onLogin();
+        })
+        .catch((error) => {
+          console.log(error);
+          // if (error.status === 401) {
+          //   alert("Your Username or Password is incorrect. Please try again!");
+          // } else {
+          //   alert("Sorry! Something went wrong. Please try again!");
+          // }
           const resMessage =
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
             error.message ||
             error.toString();
-
           this.setState({
-            loading: false,
             message: resMessage,
+            loading: false,
           });
-        }
-      );
+        });
     } else {
       this.setState({
         loading: false,

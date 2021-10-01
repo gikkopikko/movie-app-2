@@ -9,11 +9,12 @@ import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-
+// import Profile from "./components/profile.component";
 import { getCurrentUser } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
 import MovieDesc from "./components/MovieDescription";
+import { assertThisExpression, thisExpression } from "@babel/types";
 
 class App extends Component {
   constructor(props) {
@@ -89,17 +90,24 @@ class App extends Component {
             <Route
               path="/seatbooking/:movieId"
               render={(props) => (
-                <SeatBooking currentUser={this.currentUser} {...props} />
+                <SeatBooking currentUser={this.state.currentUser} {...props} />
               )}
             ></Route>
 
             <Route
               path="/profile"
               render={(props) => (
-                <Profile currentUser={this.currentUser} {...props} />
+                <Profile currentUser={this.state.currentUser} {...props} />
               )}
             ></Route>
             <Route path="/movie/:id" component={MovieDesc} />
+            <Route
+              exact
+              path="/home"
+              render={(props) => (
+                <Home currentUser={this.state.currentUser} {...props} />
+              )}
+            ></Route>
           </Switch>
         </div>
 

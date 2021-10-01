@@ -44,7 +44,7 @@
   background-color: #444451;
   height: 22px;
   width: 28px;
-  margin: 7px 9px;
+  margin: 7px 7px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   color: rgb(21, 204, 128);
@@ -124,11 +124,11 @@
   box-shadow: 0 3px 10px rgba(255, 255, 255, 0.7);
 }
 
-p.text {
+p.seat-bookng-text {
   margin: 5px 0;
 }
 
-p.text span {
+p.seat-bookng-text span {
   color: #6feaf6;
 }
 

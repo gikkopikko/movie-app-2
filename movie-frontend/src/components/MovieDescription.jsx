@@ -58,7 +58,7 @@ export default class MovieDesc extends Component {
                 </h3>
                 <h3>
                   Seats Remaining:
-                  <span>{60 - this.state.movie.totalSeatsOccupied}</span>
+                  <span>{48 - this.state.movie.totalSeatsOccupied}</span>
                 </h3>
               </div>
               <div className="col2-col3">
