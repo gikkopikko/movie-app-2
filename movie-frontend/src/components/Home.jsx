@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from "./Footer";
 import Categories from "./Categories";
 import { Link, Route, Switch } from "react-router-dom";
-import { logout } from '../common/api-utils';
+
 
 export default function Home() {
     
@@ -23,7 +23,7 @@ export default function Home() {
                     {/* <a href="#">Your Profile</a> */}
                 </div>
                 <div class="item">
-                    {/* <Link to="/login"><button onClick={logout}>Sign Out</button></Link> */}
+                    {/* <Link to="/login"><button>Sign Out</button></Link> */}
                 </div>
                 </div>
             </div>
