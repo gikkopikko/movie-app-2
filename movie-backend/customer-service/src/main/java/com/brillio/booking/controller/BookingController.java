@@ -99,25 +99,7 @@ public class BookingController {
 
 	}
 
-//	@PostMapping("/signup")
-//	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
-//		if (customerRepository.existsByUsername(signUpRequest.getUsername())) {
-//			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
-//		}
-//
-//		// Creating user's account
-//		Customer customer = new Customer(signUpRequest.getUsername(), signUpRequest.getName(),
-//				signUpRequest.getPassword());
-//
-//		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-//
-//		Customer result = customerRepository.save(customer);
-//
-//		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{username}")
-//				.buildAndExpand(result.getUsername()).toUri();
-//
-//		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
-//	}
+
 	@GetMapping("/aaa")
 	public String getAaa() {
 		return "Aaaaaaaaaa";
