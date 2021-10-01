@@ -4,8 +4,8 @@ package com.brillio.booking.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.brillio.auth.repository.MovieRepository;
-import com.brillio.booking.model.Movie;
+//import com.brillio.auth.repository.MovieRepository;
+//import com.brillio.booking.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -26,6 +26,7 @@ import com.brillio.auth.repository.CustomerRepository;
 import com.brillio.booking.model.CustomerBooking;
 import com.brillio.booking.payload.ApiResponse;
 import com.brillio.booking.payload.BookingRequest;
+import com.brillio.booking.payload.SetOccupiedRequest;
 import com.brillio.booking.model.Customer;
 
 
@@ -42,8 +43,8 @@ public class BookingController {
      CustomerRepository customerRepository;
 
 
-	@Autowired
-	MovieRepository movieRepository;
+//	@Autowired
+//	MovieRepository movieRepository;
 
 	@GetMapping("/bookings/{username}")
 	public ResponseEntity<?> getCustomerBookings(@PathVariable String username) {
@@ -54,20 +55,28 @@ public class BookingController {
 	
 	@DeleteMapping("booking/delete/{id}")
 	public ResponseEntity<String> deleteBooking(@PathVariable String id){
+		RestTemplate template = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+		
 		Optional<CustomerBooking> booking = customerBookingRepository.findById(id);
 		if(booking.isPresent()){
 			String movieId = booking.get().getMovieId();
 			List<Integer> seatsBooked = booking.get().getSeatsBooked();
+			SetOccupiedRequest setOccupiedRequest = new SetOccupiedRequest(seatsBooked);
 
+			HttpEntity<SetOccupiedRequest> entity = new HttpEntity<>(setOccupiedRequest,headers);
+			
+			ResponseEntity<String> response = template.exchange("http://localhost:9095/deleteoccupied/" +movieId, HttpMethod.PUT,
+					entity, String.class);
 			customerBookingRepository.deleteById(id);
-			Optional<Movie> movieOptional = movieRepository.findByMovieId(movieId);
-			if(movieOptional.isPresent()){
-				Movie movie = movieOptional.get();
-				List<Integer> occupiedSeats = movie.getOccupiedSeats();
-				occupiedSeats.removeAll(seatsBooked);
-				movie.setOccupiedSeats(occupiedSeats);
-				movieRepository.save(movie);
-			}
+//			Optional<Movie> movieOptional = movieRepository.findByMovieId(movieId);
+//			if(movieOptional.isPresent()){
+//				Movie movie = movieOptional.get();
+//				List<Integer> occupiedSeats = movie.getOccupiedSeats();
+//				occupiedSeats.removeAll(seatsBooked);
+//				movie.setOccupiedSeats(occupiedSeats);
+//				movieRepository.save(movie);
+//			}
 
 			return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
 		}

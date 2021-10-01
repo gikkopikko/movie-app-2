@@ -59,6 +59,22 @@ public class MovieController {
 		movieRepository.save(updatedMovie);
 		return ResponseEntity.ok(newOccupied);
 	}
+	
+	@PutMapping("/deleteoccupied/{movieId}")
+	public ResponseEntity<?> deleteOccupiedSeats(@PathVariable String movieId,
+			@RequestBody SetOccupiedRequest setOccupiedRequest) {
+		Optional<Movie> movie = movieRepository.findByMovieId(movieId);
+		if (movie.isEmpty())
+			return new ResponseEntity<>("Movie Not Found", HttpStatus.NOT_FOUND);
+		Movie updatedMovie = movie.get();
+		List<Integer> newOccupied = updatedMovie.getOccupiedSeats();
+		newOccupied.removeAll(setOccupiedRequest.getSelected());
+		Integer newTotalOccupied = newOccupied.size();
+		updatedMovie.setOccupiedSeats(newOccupied);
+		updatedMovie.setTotalSeatsOccupied(newTotalOccupied);
+		movieRepository.save(updatedMovie);
+		return ResponseEntity.ok(newOccupied);
+	}
 
 	@GetMapping("/allCategoryDetails")
 	public List<CategoryDetailsResponse> getAllCategoryDetails() {

@@ -20,18 +20,18 @@ class Profile extends Component {
     try {
       let data = await fetch("http://localhost:9091/users/siddharth.garg");
       data = await data.json();
-      // let data = this.props.currentUser;
+      // this.setState({ currentUser: this.props.currentUser });
       this.setState({
         name: data.name,
         userName: data.username,
         email: data.email,
       });
-
       let bookings = await fetch(
         "http://localhost:9091/bookings/siddharth.garg"
       );
       bookings = await bookings.json();
       this.setState({ movieBookings: bookings });
+      console.log(bookings);
     } catch (err) {
       console.log(err);
     }
@@ -46,7 +46,7 @@ class Profile extends Component {
           <p>Email: {this.state.email}</p>
 
           {this.state.movieBookings.map((booking) => {
-            return <MovieBooking data={booking} />;
+            return <MovieBooking data={booking} key={booking.id} />;
           })}
         </div>
       </div>
