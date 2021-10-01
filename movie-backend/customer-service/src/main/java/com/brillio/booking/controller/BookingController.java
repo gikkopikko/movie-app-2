@@ -42,6 +42,12 @@ public class BookingController {
 
 	}
 
+	@DeleteMapping("booking/delete/{id}")
+	public ResponseEntity<String> deleteBooking(@PathVariable String id){
+		customerBookingRepository.deleteById(id);
+		return new ResponseEntity<>("Deleted succesfully", HttpStatus.OK);
+	}
+
 	@GetMapping("/users")
 	public ResponseEntity<?> getAllCustomers() {
 		List<Customer> customer = customerRepository.findAll();
