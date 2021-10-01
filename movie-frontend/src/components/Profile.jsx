@@ -19,7 +19,7 @@ class Profile extends Component {
   }
 
 
-  async componentDidMount(){
+  async componentDidUpdate(){
     try{
       let data = await fetch("http://localhost:9091/users/siddharth.garg");
       data = await data.json();

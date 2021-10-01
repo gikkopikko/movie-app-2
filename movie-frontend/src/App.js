@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
 
-// import Login from "./components/login.component";
+import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
@@ -83,7 +83,7 @@ class App extends Component {
               )}
             ></Route>
             <Route exact path="/register" component={Register} />
-            <Route exact path="/component3" component={C3} />
+            <Route exact path="/profile" component={Profile} />
           </Switch>
         </div>
 
