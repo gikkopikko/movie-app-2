@@ -4,14 +4,16 @@ import  "../css/moviedescription.css";
 
 export default class MovieDesc extends Component {
   state = {
-    movie: []
+    movie: {}
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:9095/movies/horror1`)
+
+    console.log(this.props);
+
+    axios.get(`http://localhost:9095/movies/`+this.props.match.params.id)
       .then(res => {
-        const movie = res.data;
-        this.setState({ movie });
+        this.setState({ movie : res.data});
       })
   }
   render() {
