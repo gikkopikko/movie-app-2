@@ -5,8 +5,8 @@ export default class MovieBooking extends React.Component{
         super(props);
     }
 
-    deleteBooking = (id) => {
-        fetch('ocalhost:9091/booking/delete/'+id, {
+    deleteBooking = () => {
+        fetch('http://localhost:9091/booking/delete/'+this.props.data.id, {
             method: 'DELETE',
             })
             .then(res => res.text())
@@ -21,7 +21,7 @@ export default class MovieBooking extends React.Component{
                 <p>Seats Booked: {this.props.data.seatsBooked}</p>
                 <p>Number of Seats Booked: {this.props.data.numberOfSeats}</p>
                 <p>Amount Paid: {this.props.data.amountPaid}</p>
-                <button className="profile-button" onClick={this.deleteBooking(this.props.data.id)}>Cancel</button>
+                <button className="profile-button" onClick={this.deleteBooking}>Cancel</button>
           </div>
         );
     }
