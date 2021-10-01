@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
 
-
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
+
 
 import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
@@ -21,6 +21,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    //   this.state = {
+    //     currentUser: undefined,
+    //   };
+    // }
     this.state = {
       currentUser: null,
       isAuthenticated: false,

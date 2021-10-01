@@ -4,6 +4,8 @@ package com.brillio.booking.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.brillio.auth.repository.MovieRepository;
+import com.brillio.booking.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 import com.brillio.auth.repository.CustomerBookingRepository;
 import com.brillio.auth.repository.CustomerRepository;
 import com.brillio.booking.model.CustomerBooking;
+import com.brillio.booking.payload.ApiResponse;
 import com.brillio.booking.payload.BookingRequest;
 import com.brillio.booking.model.Customer;
 
@@ -39,6 +42,9 @@ public class BookingController {
      CustomerRepository customerRepository;
 
 
+	@Autowired
+	MovieRepository movieRepository;
+
 	@GetMapping("/bookings/{username}")
 	public ResponseEntity<?> getCustomerBookings(@PathVariable String username) {
 		List<CustomerBooking> customerBookings= customerBookingRepository.findAllByUsername(username);
@@ -48,8 +54,24 @@ public class BookingController {
 	
 	@DeleteMapping("booking/delete/{id}")
 	public ResponseEntity<String> deleteBooking(@PathVariable String id){
-		customerBookingRepository.deleteById(id);
-		return new ResponseEntity<>("Deleted succesfully", HttpStatus.OK);
+		Optional<CustomerBooking> booking = customerBookingRepository.findById(id);
+		if(booking.isPresent()){
+			String movieId = booking.get().getMovieId();
+			List<Integer> seatsBooked = booking.get().getSeatsBooked();
+
+			customerBookingRepository.deleteById(id);
+			Optional<Movie> movieOptional = movieRepository.findByMovieId(movieId);
+			if(movieOptional.isPresent()){
+				Movie movie = movieOptional.get();
+				List<Integer> occupiedSeats = movie.getOccupiedSeats();
+				occupiedSeats.removeAll(seatsBooked);
+				movie.setOccupiedSeats(occupiedSeats);
+				movieRepository.save(movie);
+			}
+
+			return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
+		}
+		return new ResponseEntity<>("Could not delete", HttpStatus.PRECONDITION_FAILED);
 	}
 	
 	@GetMapping("/users")
@@ -69,7 +91,8 @@ public class BookingController {
 	
 
 	@PostMapping("/current/book")
-	public String insertCustomerBooking(@RequestBody BookingRequest bookingRequest) {
+	public ResponseEntity<?> createBooking(@RequestBody BookingRequest bookingRequest) {
+
 		try {
 			RestTemplate template = new RestTemplate();
 			String amountPaid;
@@ -101,33 +124,21 @@ public class BookingController {
 			newCustomerBooking.setAmountPaid(amountPaid);
 
 			customerBookingRepository.save(newCustomerBooking);
-			return ("Data is inserted " + amountPaid);
+			return ResponseEntity.ok(new ApiResponse(true,"Booking created. Total amount paid: "+amountPaid));
 
 		} catch (Exception e) {
-			return (e.getMessage());
+			return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),HttpStatus.BAD_REQUEST);
 		}
 
 	}
+	@GetMapping("/booking/{username}/{movieId}")
+	public ResponseEntity<?> getBookingDetails(@PathVariable String username,@PathVariable String movieId) {
+		Optional<CustomerBooking> customerBooking= customerBookingRepository.findByUsernameAndMovieId(username, movieId);
+		if(customerBooking.isEmpty())
+			return  new ResponseEntity<Object>("booking not found", HttpStatus.NOT_FOUND);
+		return ResponseEntity.ok(customerBooking.get());
+	}
 
-//	@PostMapping("/signup")
-//	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signUpRequest) {
-//		if (customerRepository.existsByUsername(signUpRequest.getUsername())) {
-//			return new ResponseEntity(new ApiResponse(false, "Username is already taken!"), HttpStatus.BAD_REQUEST);
-//		}
-//
-//		// Creating user's account
-//		Customer customer = new Customer(signUpRequest.getUsername(), signUpRequest.getName(),
-//				signUpRequest.getPassword());
-//
-//		customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-//
-//		Customer result = customerRepository.save(customer);
-//
-//		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{username}")
-//				.buildAndExpand(result.getUsername()).toUri();
-//
-//		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
-//	}
 	@GetMapping("/aaa")
 	public String getAaa() {
 		return "Aaaaaaaaaa";
