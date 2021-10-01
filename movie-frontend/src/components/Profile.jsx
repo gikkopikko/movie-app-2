@@ -3,97 +3,52 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Form, Table } from "react-bootstrap";
 import "../css/profile.css";
-import Input from "./Input";
-import Button from "./Button";
 
-let api = axios.create({ baseURL: "http://localhost:9091" });
+import MovieBooking from "./MovieBooking";
 
 class Profile extends Component {
-  state = {
-    userData: [],
+  constructor(props){
+    super(props);
 
-    bookingData: [],
-    username: "",
-  };
+    this.state = {
+      name : "",
+      userName : "",
+      email : "",
+      movieBookings : []
+    }
+  }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
 
-    api
-      .get("/users/" + this.state.username)
-      .then((res) => {
-        const x = res.data;
-        this.setState({
-          UserData: x,
-        });
+  async componentDidMount(){
+    try{
+      let data = await fetch("http://localhost:9091/users/siddharth.garg");
+      data = await data.json();
+      this.setState({
+        name : data.name,
+        userName : data.username,
+        email :  data.email
       })
-      .catch((error) => {
-        console.log(error);
-      });
 
-    api
-      .get("/bookings/" + this.state.username)
-      .then((res) => {
-        const x = res.data;
-        this.setState({
-          bookingData: x,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+      let bookings = await fetch("http://localhost:9091/bookings/"+this.state.userName);
+      bookings = await bookings.json();
+      this.setState({movieBookings : bookings})
+    }
+    catch(err){console.log(err)};
+  }
+
 
   render() {
     return (
       <div>
         <div className="profile-container">
-          <Form>
-            <Input
-              id="username"
-              name="username"
-              handleChange={(e) => this.setState({ username: e.target.value })}
-              label="username"
-            />
-            <Button onClick={this.handleSubmit} value="Search" />
-          </Form>
+      
+          <p>Name: {this.state.name}</p>
+          <p>UserName: {this.state.userName}</p>
+          <p>Email: {this.state.email}</p>
 
-          <div>
-            {this.state.userData.map((x) => {
-              return (
-                <div className="inner-container">
-                  <table>
-                    <tr>
-                      <td>{x.name}</td>
-                      <td>{x.username}</td>
-                      <td>{x["email"]}</td>
-                    </tr>
-                  </table>
-                </div>
-              );
-            })}
-          </div>
-          <p>Name: Alankrita Patel</p>
-          <p>UserName: Alankrita.Patel</p>
-          <p>Email: Alankrita.Patel@brillio.com</p>
 
-          <div className="profile-inner-container">
-            <p>Booking Id: addfs</p>
-            <p>Movie: movie Name</p>
-            <p>Seats Booked: addfs</p>
-            <p>Number of Seats Booked: addfs</p>
-            <p>Amount Paid: $50</p>
-            <button className="profile-button">Cancel</button>
-          </div>
+          {this.state.movieBookings.map((booking) => {return <MovieBooking data={booking}/>})}
 
-          <div className="profile-inner-container">
-            <p>Booking Id: addfs</p>
-            <p>Movie: movie Name</p>
-            <p>Seats Booked: addfs</p>
-            <p>Number of Seats Booked: addfs</p>
-            <p>Amount Paid: $50</p>
-            <button className="profile-button">Cancel</button>
-          </div>
         </div>
       </div>
     );
