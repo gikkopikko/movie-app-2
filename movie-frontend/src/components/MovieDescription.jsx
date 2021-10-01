@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-// import  "../css/moviedescription.css";
+import  "../css/moviedescription.css";
 
 export default class MovieDesc extends Component {
   state = {
@@ -20,14 +20,9 @@ export default class MovieDesc extends Component {
     return (
       <body>
         <div>
-          <header classname="header">
-            <nav className="navbar">
-              <a className="Links">Home</a>
-              <a className="Links">Profile</a>
-            </nav>
-          </header>
+         
 
-          <div className="container">
+          <div>
             <div className="col1">
               <img src={this.state.movie.posterURL} className="img-demo" />
             </div>

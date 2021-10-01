@@ -88,6 +88,7 @@ class App extends Component {
             ></Route>
             <Route exact path="/register" component={Register} />
             <Route exact path="/home" component={Home} />
+            <Route exact path="/profile" component={Profile} />
             <Route
               path="/seatbooking/:movieId"
               render={(props) => (

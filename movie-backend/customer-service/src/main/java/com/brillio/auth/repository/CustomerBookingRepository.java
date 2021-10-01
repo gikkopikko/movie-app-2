@@ -10,6 +10,7 @@ import com.brillio.booking.model.CustomerBooking;
 @Repository
 public interface CustomerBookingRepository extends MongoRepository<CustomerBooking, String> {
 
+	Optional<CustomerBooking> findById(String id);
 	Boolean existsByUsername(String username);
 	List<CustomerBooking> findAllByUsername(String username);
 	Optional<CustomerBooking> findByUsernameAndMovieId(String username, String movieId);
