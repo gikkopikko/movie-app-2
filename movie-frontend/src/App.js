@@ -12,6 +12,7 @@ import Profile from "./components/Profile";
 import { getCurrentUser } from "../src/common/api-utils";
 import C1 from "./components/C1";
 import C3 from "./components/C3";
+import SeatBooking from "./components/SeatBooking";
 
 class App extends Component {
   constructor(props) {
@@ -68,13 +69,13 @@ class App extends Component {
   // }
 
   render() {
-    const { currentUser } = this.state;
+    // const { currentUser } = this.state;
 
     return (
       <div>
-        <div className="container mt-3">
+        <div className="">
+          <header>aaaa</header>
           <Switch>
-            <Route exact path="/" component={C1} />
             <Route
               exact
               path="/login"
@@ -82,8 +83,15 @@ class App extends Component {
                 <Login onLogin={this.handleLogin} {...props} />
               )}
             ></Route>
+            <Route exact path="/component1" component={C1} />
             <Route exact path="/register" component={Register} />
-            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/component3" component={C3} />
+            <Route
+              path="/seatbooking/:movieId"
+              render={(props) => (
+                <SeatBooking currentUser={this.currentUser} {...props} />
+              )}
+            ></Route>
           </Switch>
         </div>
 

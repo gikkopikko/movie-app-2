@@ -39,9 +39,7 @@ const vname = (value) => {
   if (!validName.test(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-
         The Name must only contain alphabets.
-
       </div>
     );
   }
@@ -140,6 +138,7 @@ export default class Register extends Component {
             message: response.message,
             successful: response.success,
           });
+
           // this.props.history.push("/login");
         },
         (error) => {
