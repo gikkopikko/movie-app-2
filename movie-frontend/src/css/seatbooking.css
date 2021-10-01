@@ -3,6 +3,7 @@
 }
 
 .seats-booking-body {
+  text-align: center;
   background-color: #242333;
   color: #fff;
   display: flex;
