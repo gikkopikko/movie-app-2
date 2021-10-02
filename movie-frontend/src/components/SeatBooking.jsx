@@ -19,7 +19,9 @@ export default class SeatBooking extends Component {
       selected: [],
       occupied: [],
       alreadyBooked: [],
+      username: "",
     };
+    console.log(this.props);
   }
 
   componentDidMount() {
@@ -30,6 +32,9 @@ export default class SeatBooking extends Component {
     });
     getCurrentUser()
       .then((response) => {
+        this.setState({
+          username: response.username,
+        });
         const bookingDetailsRequest = {
           username: response.username,
           movieId: this.state.movieId,
@@ -43,16 +48,15 @@ export default class SeatBooking extends Component {
         console.log(response);
       })
       .catch((error) => console.log(error));
-    getMovieDetails(this.state.movieId)
-      .then((response) => {
-        this.setState({
-          occupied: response.occupiedSeats,
-          movieName: response.movieName,
-          moviePrice: response.price,
-        });
-        console.log(response);
-      })
-      .catch((error) => console.log(error));
+    getMovieDetails(this.state.movieId).then((response) => {
+      this.setState({
+        occupied: response.occupiedSeats,
+        movieName: response.movieName,
+        moviePrice: response.price,
+      });
+      console.log(response);
+    });
+    // .catch((error) => console.log(error));
   }
 
   seatClick = (i, e) => {
@@ -84,7 +88,7 @@ export default class SeatBooking extends Component {
 
   handleBooking = (e) => {
     const bookingRequest = {
-      username: "siddharth.garg",
+      username: this.state.username,
       movieId: this.state.movieId,
       movieName: this.state.movieName,
       selected: this.state.selected,
