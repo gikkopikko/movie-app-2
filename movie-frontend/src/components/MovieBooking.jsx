@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../css/profile.css";
 
 export default class MovieBooking extends React.Component {
   constructor(props) {
@@ -18,8 +18,9 @@ export default class MovieBooking extends React.Component {
   };
 
   render() {
+    console.log(this.props.data);
     return (
-      <div className="profile-inner-container">
+      <div className="profile-booking">
         <p>Booking Id: {this.props.data.id}</p>
         <p>Movie: {this.props.data.movieName}</p>
         <p>Seats Booked: {this.props.data.seatsBooked.join(", ")}</p>
