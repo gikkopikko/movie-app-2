@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import  "../css/main.css";
+import  "../css/home.css";
 
 export default class MovieDesc extends Component {
   state = {

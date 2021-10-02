@@ -16,7 +16,7 @@ class Profile extends Component {
     };
   }
 
-  async componentDidMount() {
+  async componentDidMount(){
     try {
       let data = await fetch("http://localhost:9091/users/siddharth.garg");
       data = await data.json();
@@ -26,6 +26,14 @@ class Profile extends Component {
         userName: data.username,
         email: data.email,
       });
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+
+  async componentDidUpdate() {
+    try {
       let bookings = await fetch(
         "http://localhost:9091/bookings/siddharth.garg"
       );
@@ -39,15 +47,21 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
-        <div className="profile-container">
-          <p>Name: {this.state.name}</p>
-          <p>UserName: {this.state.userName}</p>
-          <p>Email: {this.state.email}</p>
+      <div className="profile-container">
+        <div className="profile-inner-container">
+          <div className="profile-details">
+            <h3>My Profile</h3>
+            <p>Name: {this.state.name}</p>
+            <p>UserName: {this.state.userName}</p>
+            <p>Email: {this.state.email}</p>
+          </div>
 
-          {this.state.movieBookings.map((booking) => {
-            return <MovieBooking data={booking} key={booking.id} />;
-          })}
+          <div className="profile-bookings">
+            <h3>My bookings</h3>
+            {this.state.movieBookings.map((booking) => {
+              return <MovieBooking data={booking} key={booking.id} />;
+            })}
+          </div>
         </div>
       </div>
     );
