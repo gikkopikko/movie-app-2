@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import  "../css/main.css";
+import "../css/movie.css"
 
 export default class MovieDesc extends Component {
   state = {
@@ -19,7 +20,7 @@ export default class MovieDesc extends Component {
   render() {
     return (
       <body>
-        <div>
+        <div className="body-container">
            
             
             <div className="container">

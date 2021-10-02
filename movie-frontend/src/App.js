@@ -82,18 +82,19 @@ class App extends Component {
                     <Link to={"/home"} className="nav-link">
                       Home
                     </Link>
+                    <Link to={"/profile"} className="nav-link">
+                    {this.state.currentUser.username}
+                  </Link>
+
+                  <a href="/login" className="nav-link"  onClick={logout}>
+                  LogOut
+                </a>
+
+                  
                   </div>
 
-                  <div className="item">
-                    <Link to={"/profile"} className="nav-link">
-                      {this.state.currentUser.username}
-                    </Link>
-                  </div>
-                  <div className="item">
-                    <a href="/login" className="nav-link" onClick={logout}>
-                      LogOut
-                    </a>
-                  </div>
+                
+              
                 </div>
               ) : (
                 <div className="right">
@@ -101,13 +102,12 @@ class App extends Component {
                     <Link to={"/login"} className="nav-link">
                       Login
                     </Link>
+                    <Link to={"/register"} className="nav-link">
+                      SignUp 
+                    </Link>
                 </div>
 
-                <div className="item">
-                    <Link to={"/register"} className="nav-link">
-                      Sign Up
-                    </Link>
-                  </div>
+            
                 </div>
               )}
             </div>

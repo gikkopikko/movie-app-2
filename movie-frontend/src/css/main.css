@@ -60,7 +60,7 @@ body {
 
 .modal .inner {
   width: 100%;
-  background-color: cornflowerblue;
+  background-color: rgb(223, 228, 236);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,12 +177,15 @@ header .left {
   flex-direction: row;
   align-items: flex-start;
   flex: 3;
+  color: #fff;
+  margin-right: 50px;
 }
 
 header .right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  padding-right: 20px;
   flex: 9;
 }
 
@@ -190,6 +193,7 @@ header .right .holder {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  margin-right: 50px;
 }
 
 header .left h2 {
@@ -221,6 +225,18 @@ header .item button {
   cursor: pointer;
 }
 
+.item {
+  margin-right: 40px;
+}
+
+.navbar-brand {
+  color: white;
+}
+
+/* .body-container {
+  background-color: #421d32;
+  color: white;
+} */
 @media screen and (max-width: 500px) {
   .category .cards {
     flex-direction: column;
@@ -234,6 +250,7 @@ header .item button {
   header .left {
     display: flex;
     align-items: center;
+    color: white;
   }
 
   header .left h2 {
@@ -245,12 +262,14 @@ header .item button {
     flex-direction: column;
     align-items: center;
     flex: 9;
+    margin-right: 50px;
   }
 
   header .right .holder {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    margin-right: 50px;
   }
 
   .footer .inner {

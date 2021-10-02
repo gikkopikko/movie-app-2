@@ -1,8 +1,8 @@
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
-body {
+/* body {
   background-color: bisque;
   color: black;
   display: flex;
@@ -11,18 +11,19 @@ body {
   justify-content: center;
   font-family: "Lato", sans-serif;
   margin: 0;
-}
+} */
 
 .profile-container {
-  background-color: lemonchiffon;
-  margin: 50px 0;
+  background-color: #421d32;
+  margin: 0;
   padding: 20px;
   border-radius: 4px;
   border-style: solid;
+  color: white;
 }
 
 .profile-inner-container {
-  background-color: burlywood;
+  background-color: black;
   border: 0;
   border-radius: 5px;
   font-size: 14px;
@@ -33,5 +34,5 @@ body {
 }
 
 .profile-button {
-  background-color: red;
+  background-color: #9b1362;
 }
