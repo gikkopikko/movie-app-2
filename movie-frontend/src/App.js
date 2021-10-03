@@ -69,9 +69,9 @@ class App extends Component {
               </Link>
             </div>
 
-            <div className="holder">
+            <div className="right">
               {this.state.currentUser ? (
-                <div className="right">
+                <div className="holder">
                   <div className="item">
                     <Link to={"/home"} className="nav-link">
                       Home

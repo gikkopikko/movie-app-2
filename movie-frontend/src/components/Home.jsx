@@ -12,9 +12,6 @@ export default function Home() {
       <Route path="/home">
         <Categories />
       </Route>
-      {/* <Route path="/profile"></Route>
-            <Route path="/login"></Route>
-             <Route path="/movie/:id"></Route> */}
     </div>
   );
 }

@@ -10,7 +10,6 @@ export default function Category(props) {
         .then(response => response.json())
         .then(data => {
             let movies = data.map(movie => {
-                console.log(movie);
                 return <Card title={movie.movieName} id={movie.movieId} posterURL={movie.posterURL}/>;
             });
             setCards(movies);
