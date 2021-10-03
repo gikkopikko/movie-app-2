@@ -28,7 +28,6 @@ export default class SeatBooking extends Component {
     this.setState({
       moviePrice: 0,
       selected: [],
-      occupied: [1, 2, 3, 4, 10, 15, 17, 19],
     });
     getCurrentUser()
       .then((response) => {
@@ -87,6 +86,7 @@ export default class SeatBooking extends Component {
   };
 
   handleBooking = (e) => {
+    if (this.state.selected.length === 0) return alert("Please select a seat");
     const bookingRequest = {
       username: this.state.username,
       movieId: this.state.movieId,
@@ -110,11 +110,9 @@ export default class SeatBooking extends Component {
     return (
       <div className="seats-booking-body">
         <div className="movie-container">
-          <select id="movie">
-            <option value="12">
-              {this.state.movieName + " $" + this.state.moviePrice}
-            </option>
-          </select>
+          <div className="movie-name-text">
+            {this.state.movieName + "    ($" + this.state.moviePrice + ")"}
+          </div>
         </div>
 
         <ul className="showcase">
@@ -140,7 +138,7 @@ export default class SeatBooking extends Component {
           <div className="screen"></div>
           {rows.map((row) => {
             return (
-              <div className="row" key={"row-" + row}>
+              <div className="seat-row" key={"row-" + row}>
                 {cols.map((col) => {
                   return (
                     <div

@@ -6,17 +6,15 @@ import MovieDesc from "./MovieDescription";
 import "../css/movie.css";
 import "../css/home.css";
 
-
 export default function Home() {
-    
-    return (
-        <div className="body-container">
-       
-        <Route path="/home"><Categories/></Route>
-            {/* <Route path="/profile"></Route>
+  return (
+    <div className="body-container">
+      <Route path="/home">
+        <Categories />
+      </Route>
+      {/* <Route path="/profile"></Route>
             <Route path="/login"></Route>
              <Route path="/movie/:id"></Route> */}
-           
-        </div>
+    </div>
   );
 }

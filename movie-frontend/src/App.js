@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { withRouter, Switch, Route, Link } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -53,7 +52,7 @@ class App extends Component {
   handleLogin = () => {
     alert("successfull login");
     this.loadCurrentUser();
-    this.props.history.push("/component3");
+    this.props.history.push("/home");
   };
   componentDidMount() {
     this.loadCurrentUser();
@@ -78,18 +77,13 @@ class App extends Component {
                       Home
                     </Link>
                     <Link to={"/profile"} className="nav-link">
-                    {this.state.currentUser.username}
-                  </Link>
+                      {this.state.currentUser.username}
+                    </Link>
 
-                  <a href="/login" className="nav-link"  onClick={logout}>
-                  LogOut
-                </a>
-
-                  
+                    <a href="/login" className="nav-link" onClick={logout}>
+                      LogOut
+                    </a>
                   </div>
-
-                
-              
                 </div>
               ) : (
                 <div className="right">
@@ -98,11 +92,9 @@ class App extends Component {
                       Login
                     </Link>
                     <Link to={"/register"} className="nav-link">
-                      SignUp 
+                      SignUp
                     </Link>
-                </div>
-
-            
+                  </div>
                 </div>
               )}
             </div>
@@ -142,7 +134,7 @@ class App extends Component {
 
         {/*<AuthVerify logOut={this.logOut}/> */}
 
-    <Footer/>
+        <Footer />
       </div>
     );
   }
