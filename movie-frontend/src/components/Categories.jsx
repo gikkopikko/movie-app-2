@@ -18,7 +18,7 @@ export default function Categories() {
     },[]);
 
     return (
-        <div>
+        <div className="categories-holder">
             {categories.map((cat) => {
                 return <Category title={cat.toUpperCase()}/>
             })}
