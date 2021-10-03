@@ -1,26 +1,27 @@
-import React,{useState} from 'react'
+import React,{useEffect,useState} from 'react'
 import Category from "./Category";
+import { getMovieDetails, getMoviesByCategory } from '../common/api-utils';
 
 export default function Categories() {
 
-    const [categories,setCategories] = useState([]);
+    const [movieData,setMovieData] = useState([]);
 
-    useState(()=>{
+    useEffect(()=>{
         fetch("http://localhost:9095/allCategoryDetails")
         .then(res => res.json())
         .then(data => {
-            let cat = [];
-            data.forEach((obj) => {
-                cat.push(obj.category);
-            });
-            setCategories(cat);
+            setMovieData(data);
         });
+
+
+        getMovieDetails("horror1")
+        .then(data => console.log(data));
     },[]);
 
     return (
         <div className="categories-holder">
-            {categories.map((cat) => {
-                return <Category title={cat.toUpperCase()}/>
+            {movieData.map((cat) => {
+                return <Category title={cat.category.toUpperCase()} movieCards={cat.movieCards}/>
             })}
         </div>
     )
