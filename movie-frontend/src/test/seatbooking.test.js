@@ -56,18 +56,26 @@ describe("tests", () => {
     //       inst.handleInc();
     //       expect(inst.state.num).toBe(1);
     //     });
-    //     it("to check decraease in count", () => {
-    //       // const wrapper = shallow(<Count />);
-    //       const wrapper = shallow(<Count />);
-    //       // expect(text.trim()).toEqual("submit");
-    //       let inst = wrapper.instance();
-    //       // wrapper.find("button").at(0).simulate("click");
-    //       // let obj = new Count();
-    //       // obj.handleInc();
-    //       // expect(obj.state.num).toBe(1);
-    //       inst.handleDec();
-    //       expect(inst.state.num).toBe(-1);
-    //     });
+    it("to check click of seat to be selected", () => {
+      // const wrapper = shallow(<Count />);
+      const wrapper = shallow(<SeatBooking match={match} />);
+      // expect(text.trim()).toEqual("submit");
+      let inst = wrapper.instance();
+      inst.seatClick(45);
+      expect(inst.state.selected).toContain(45);
+      expect(inst.state.selected).toHaveLength(1);
+    });
+    it("to check click of seat again to be unselected", () => {
+      // const wrapper = shallow(<Count />);
+      const wrapper = shallow(<SeatBooking match={match} />);
+      // expect(text.trim()).toEqual("submit");
+      let inst = wrapper.instance();
+      inst.seatClick(45);
+      inst.seatClick(30);
+      inst.seatClick(45);
+      expect(inst.state.selected).toContain(30);
+      expect(inst.state.selected).toHaveLength(1);
+    });
     //     it("to check increase in count1", () => {
     //       // const wrapper = shallow(<Count />);
     //       const wrapper = shallow(<Count />);
