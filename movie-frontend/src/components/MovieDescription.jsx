@@ -22,11 +22,14 @@ export default class MovieDesc extends Component {
   }
   render() {
     return (
+
+
       <body className="movie-desc-container">
         <div>
         
                 <div className="movie-desc-col1">
                     <img src={this.state.movie.posterURL} className="movie-desc-img-demo"/>
+
                 </div>
                 <div className="movie-desc-col2">
                     <h1 className="movie-desc-heading1">MOVIE DESCRIPTION</h1>

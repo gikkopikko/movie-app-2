@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
+import  "../css/Register.css";
 // import { input } from "react-validation/build/input";
 // import { form } from "react-validation/build/form";
 import { login } from "../common/api-utils";
@@ -92,8 +92,9 @@ export default class Login extends Component {
 
   render() {
     return (
+      <div className="body-container">
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="cardR card-container-Register">
           <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -158,6 +159,12 @@ export default class Login extends Component {
           </Form>
         </div>
       </div>
+    
+
+
+      </div>
+
+
     );
   }
 }

@@ -4,7 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 import { signup } from "../common/api-utils";
-
+import  "../css/Register.css";
 const required = (value) => {
   if (!value) {
     return (
@@ -171,8 +171,9 @@ export default class Register extends Component {
   };
   render() {
     return (
+      <div className="body-container">
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="cardR card-container-Register">
           <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -253,6 +254,7 @@ export default class Register extends Component {
                   <button className="btn btn-primary btn-block">Sign Up</button>
                 </div>
               </div>
+             
             )}
 
             {this.state.message && (
@@ -277,6 +279,7 @@ export default class Register extends Component {
             />
           </Form>
         </div>
+      </div>
       </div>
     );
   }

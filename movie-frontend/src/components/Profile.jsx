@@ -18,13 +18,15 @@ class Profile extends Component {
 
   async componentDidMount(){
     try {
-      let data = await fetch("http://localhost:9091/users/siddharth.garg");
+
+      
+      let data = await fetch("http://localhost:9091/users/"+this.props.currentUser.name);
       data = await data.json();
       // this.setState({ currentUser: this.props.currentUser });
       this.setState({
-        name: data.name,
-        userName: data.username,
-        email: data.email,
+        name: this.props.currentUser.username,
+        userName: this.props.currentUser.username,
+        email: this.props.currentUser.name,
       });
     }
     catch(err){

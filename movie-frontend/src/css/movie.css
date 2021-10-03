@@ -1,0 +1,11 @@
+.body-container {
+  background-color: #421d32;
+  color: white;
+}
+button,
+select {
+  text-transform: none;
+  border: solid;
+  background-color: black;
+  color: white;
+}

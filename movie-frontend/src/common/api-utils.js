@@ -1,4 +1,5 @@
 import fetchPonyfill from "fetch-ponyfill";
+
 const { fetch, Request, Response, Headers } = fetchPonyfill({ Promise });
 
 const ACCESS_TOKEN = "accessToken";
