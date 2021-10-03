@@ -19,10 +19,10 @@ class Profile extends Component {
   async componentDidMount() {
     console.log(this.props);
   
-    console.log(this.props.currentUser.name);
-    console.log(this.props.currentUser.email);
-    console.log(this.props.currentUser.username);
-    console.log(this.props.currentUser.password);
+   // console.log(this.props.currentUser.name);
+    // console.log(this.props.currentUser.email);
+    // console.log(this.props.currentUser.username);
+    // console.log(this.props.currentUser.password);
    
     try {
       let data = await fetch("http://localhost:9091/users/"+this.props.currentUser.name);
