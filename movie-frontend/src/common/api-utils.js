@@ -91,3 +91,11 @@ export function createBooking(bookingRequest) {
 export function logout() {
   localStorage.removeItem(ACCESS_TOKEN);
 }
+
+export function getMoviesByCategory() {
+  return request({
+    url: API_BASE_URL + "/movie-service/allCategoryDetails",
+
+    method: "GET",
+  });
+}

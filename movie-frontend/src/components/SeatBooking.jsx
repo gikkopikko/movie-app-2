@@ -5,6 +5,7 @@ import {
   getMovieDetails,
   createBooking,
   getCurrentUser,
+  getMoviesByCategory,
 } from "../common/api-utils";
 
 const rows = [0, 1, 2, 3, 4, 5];
@@ -56,6 +57,10 @@ export default class SeatBooking extends Component {
       console.log(response);
     });
     // .catch((error) => console.log(error));
+
+    getMoviesByCategory()
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   }
 
   seatClick = (i, e) => {
