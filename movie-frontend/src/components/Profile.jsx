@@ -37,7 +37,7 @@ class Profile extends Component {
   async componentDidUpdate() {
     try {
       let bookings = await fetch(
-        "http://localhost:9091/bookings/siddharth.garg"
+        "http://localhost:9092/customer_service/current"
       );
       bookings = await bookings.json();
       this.setState({ movieBookings: bookings });
