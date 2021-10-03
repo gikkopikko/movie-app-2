@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Switch, Route, Link } from "react-router-dom";
+import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
@@ -51,7 +52,7 @@ class App extends Component {
   handleLogin = () => {
     alert("successfull login");
     this.loadCurrentUser();
-    this.props.history.push("/component3");
+    this.props.history.push("/home");
   };
   componentDidMount() {
     this.loadCurrentUser();
@@ -75,14 +76,10 @@ class App extends Component {
                     <Link to={"/home"} className="nav-link">
                       Home
                     </Link>
-                  </div>
-
-                  <div className="item">
                     <Link to={"/profile"} className="nav-link">
                       {this.state.currentUser.username}
                     </Link>
-                  </div>
-                  <div className="item">
+
                     <a href="/login" className="nav-link" onClick={logout}>
                       LogOut
                     </a>
@@ -94,11 +91,8 @@ class App extends Component {
                     <Link to={"/login"} className="nav-link">
                       Login
                     </Link>
-                  </div>
-
-                  <div className="item">
                     <Link to={"/register"} className="nav-link">
-                      Sign Up
+                      SignUp
                     </Link>
                   </div>
                 </div>
@@ -139,6 +133,8 @@ class App extends Component {
         </div>
 
         {/*<AuthVerify logOut={this.logOut}/> */}
+
+        <Footer />
       </div>
     );
   }

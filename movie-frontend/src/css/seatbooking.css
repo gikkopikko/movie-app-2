@@ -109,7 +109,7 @@
   margin-left: 2px;
 }
 
-.row {
+.seat-row {
   display: flex;
   padding-left: 7px;
 }
@@ -143,4 +143,8 @@ p.seat-bookng-text span {
 .seat-booking-btn:hover {
   color: #242333;
   background-color: white;
+}
+
+.movie-name-text {
+  font-size: 1.5rem;
 }
