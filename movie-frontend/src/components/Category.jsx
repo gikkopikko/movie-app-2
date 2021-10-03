@@ -23,8 +23,8 @@ export default function Category(props) {
             <div class="title">
                 <h2>{props.title}</h2>
             </div>
-            <div class="container">
-                <div class="cards">
+            <div class="card-container">
+                <div class="movie-display-cards">
                     {cards}
                 </div>
             </div>

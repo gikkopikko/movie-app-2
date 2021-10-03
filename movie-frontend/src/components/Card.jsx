@@ -3,7 +3,7 @@ import { Link} from "react-router-dom";
 
 export default function Card(props) {
     return (
-        <div class="card">
+        <div class="movie-display-card">
             <Link to={{pathname: '/movie/'+props.id}}>
                 <div class="poster">
                     <div>

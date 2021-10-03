@@ -16,29 +16,32 @@ class Profile extends Component {
     };
   }
 
-  async componentDidMount() {
-    console.log(this.props);
-  
-   // console.log(this.props.currentUser.name);
-    // console.log(this.props.currentUser.email);
-    // console.log(this.props.currentUser.username);
-    // console.log(this.props.currentUser.password);
-   
+  async componentDidMount(){
     try {
+
+      
       let data = await fetch("http://localhost:9091/users/"+this.props.currentUser.name);
       data = await data.json();
-      // let data = this.props.currentUser;
+      // this.setState({ currentUser: this.props.currentUser });
       this.setState({
         name: this.props.currentUser.username,
         userName: this.props.currentUser.username,
         email: this.props.currentUser.name,
       });
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
 
+  async componentDidUpdate() {
+    try {
       let bookings = await fetch(
         "http://localhost:9091/bookings/siddharth.garg"
       );
       bookings = await bookings.json();
       this.setState({ movieBookings: bookings });
+      console.log(bookings);
     } catch (err) {
       console.log(err);
     }
@@ -46,15 +49,21 @@ class Profile extends Component {
 
   render() {
     return (
-      <div>
-        <div className="profile-container">
-          <p>Name: {this.state.name}</p>
-          <p>UserName: {this.state.userName}</p>
-          <p>Email: {this.state.email}</p>
+      <div className="profile-container">
+        <div className="profile-inner-container">
+          <div className="profile-details">
+            <h3>My Profile</h3>
+            <p>Name: {this.state.name}</p>
+            <p>UserName: {this.state.userName}</p>
+            <p>Email: {this.state.email}</p>
+          </div>
 
-          {this.state.movieBookings.map((booking) => {
-            return <MovieBooking data={booking} />;
-          })}
+          <div className="profile-bookings">
+            <h3>My bookings</h3>
+            {this.state.movieBookings.map((booking) => {
+              return <MovieBooking data={booking} key={booking.id} />;
+            })}
+          </div>
         </div>
       </div>
     );

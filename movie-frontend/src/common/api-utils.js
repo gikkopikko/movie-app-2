@@ -4,7 +4,6 @@ const { fetch, Request, Response, Headers } = fetchPonyfill({ Promise });
 
 const ACCESS_TOKEN = "accessToken";
 const API_BASE_URL = "http://localhost:9092";
-
 const request = (options) => {
   const headers = new Headers({
     "Content-Type": "application/json",
@@ -73,6 +72,15 @@ export function getMovieDetails(movieId) {
 }
 
 export function createBooking(bookingRequest) {
+  const occupiedRequest = {
+    selected: bookingRequest.selected,
+  };
+  request({
+    url: API_BASE_URL + "/movie-service/setoccupied/" + bookingRequest.movieId,
+    method: "PUT",
+    body: JSON.stringify(occupiedRequest),
+  });
+
   return request({
     url: API_BASE_URL + "/customer-service/current/book",
     method: "POST",
@@ -80,6 +88,6 @@ export function createBooking(bookingRequest) {
   });
 }
 
-export function logout(){
+export function logout() {
   localStorage.removeItem(ACCESS_TOKEN);
 }

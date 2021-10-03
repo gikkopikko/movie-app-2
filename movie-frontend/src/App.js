@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { withRouter, Switch, Route, Link } from "react-router-dom";
 import Footer from "./components/Footer";
@@ -10,13 +11,10 @@ import Register from "./components/register.component";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 
-
 import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
 import MovieDesc from "./components/MovieDescription";
-import { assertThisExpression, thisExpression } from "@babel/types";
-
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +36,7 @@ class App extends Component {
     });
     getCurrentUser()
       .then((response) => {
+        // console.log(response);
         this.setState({
           currentUser: response,
           isAuthenticated: true,
@@ -60,11 +59,7 @@ class App extends Component {
     this.loadCurrentUser();
   }
 
-
-  
-
   render() {
-
     return (
       <div>
         <div className="">
@@ -75,11 +70,10 @@ class App extends Component {
               </Link>
             </div>
 
-            
             <div className="holder">
               {this.state.currentUser ? (
                 <div className="right">
-                <div className="item">
+                  <div className="item">
                     <Link to={"/home"} className="nav-link">
                       Home
                     </Link>
@@ -99,7 +93,7 @@ class App extends Component {
                 </div>
               ) : (
                 <div className="right">
-                <div className="item">
+                  <div className="item">
                     <Link to={"/login"} className="nav-link">
                       Login
                     </Link>
@@ -112,7 +106,6 @@ class App extends Component {
                 </div>
               )}
             </div>
-           
           </header>
           <Switch>
             <Route
@@ -130,7 +123,6 @@ class App extends Component {
                 <SeatBooking currentUser={this.state.currentUser} {...props} />
               )}
             ></Route>
-
             <Route
               path="/profile"
               render={(props) => (
