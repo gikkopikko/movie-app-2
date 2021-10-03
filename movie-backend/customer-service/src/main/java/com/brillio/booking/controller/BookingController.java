@@ -46,7 +46,7 @@ public class BookingController {
 //	@Autowired
 //	MovieRepository movieRepository;
 
-	@GetMapping("/bookings/{username}")
+	@GetMapping("/booking/{username}")
 	public ResponseEntity<?> getCustomerBookings(@PathVariable String username) {
 		List<CustomerBooking> customerBookings= customerBookingRepository.findAllByUsername(username);
 		return ResponseEntity.ok(customerBookings);
