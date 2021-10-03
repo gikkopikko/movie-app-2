@@ -87,8 +87,11 @@ body {
   text-decoration: none;
 }
 
+.categories-holder {
+  padding-top: 15px;
+}
+
 .category {
-  margin-top: 15px;
   text-align: center;
 }
 
