@@ -64,6 +64,15 @@ export function getBookingDetails(bookingDetailsRequest) {
     method: "GET",
   });
 }
+
+export function getUserBookingDetails(bookingDetailsRequest) {
+  return request({
+    url:
+      API_BASE_URL +
+      `/customer-service/booking/${bookingDetailsRequest.username}`,
+    method: "GET",
+  });
+}
 export function getMovieDetails(movieId) {
   return request({
     url: API_BASE_URL + `/movie-service/movies/${movieId}`,

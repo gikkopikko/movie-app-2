@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
+import {getMovieDetails } from "../common/api-utils";
+
 export default class MovieDesc extends Component {
   constructor(props) {
     super(props);
@@ -11,14 +13,23 @@ export default class MovieDesc extends Component {
     movie: {},
   };
 
-  componentDidMount() {
-    console.log(this.props);
+  // componentDidMount() {
+  //   console.log(this.props);
 
-    axios
-      .get(`http://localhost:9095/movies/` + this.props.match.params.id)
-      .then((res) => {
-        this.setState({ movie: res.data });
+  //   axios
+  //     .get(`http://localhost:9095/movies/` + this.props.match.params.id)
+  //     .then((res) => {
+  //       this.setState({ movie: res.data });
+  //     });
+  // }
+
+  componentDidMount(){
+    getMovieDetails(this.props.match.params.id).then((response) => {
+      this.setState({
+        movie: response,
       });
+      console.log(response);
+    });
   }
 
   handleBookNow = (e) => {
