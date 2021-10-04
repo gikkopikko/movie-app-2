@@ -1,4 +1,5 @@
 import React from "react";
+import { deleteBooking } from "../common/api-utils";
 import "../css/profile.css";
 
 export default class MovieBooking extends React.Component {
@@ -6,15 +7,32 @@ export default class MovieBooking extends React.Component {
     super(props);
   }
 
-  deleteBooking = (id, e) => {
-    fetch("http://localhost:9091/booking/delete/" + id, {
-      method: "DELETE",
-    })
-      .then((res) => res.text())
-      .then((res) => console.log(res))
+  // deleteBooking = (id, e) => {
+  //   fetch("http://localhost:9091/booking/delete/" + id, {
+  //     method: "DELETE",
+  //   })
+  //     .then((res) => res.text())
+  //     .then((res) => console.log(res))
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   window.location.reload();
+  // };
+
+  deleteUserBooking = (id, e) => {
+    alert("Are you sure you want to delete this booking.");
+    const deleteRequest = {
+      bookingId: id,
+    };
+    deleteBooking(deleteRequest)
+      .then((res) => {
+        res.text();
+        console.log(res);
+      })
       .catch((error) => {
         console.log(error);
       });
+      
     window.location.reload();
   };
 
@@ -29,7 +47,7 @@ export default class MovieBooking extends React.Component {
         <p>Amount Paid: {this.props.data.amountPaid}</p>
         <button
           className="profile-button"
-          onClick={(e) => this.deleteBooking(this.props.data.id, e)}
+          onClick={(e) => this.deleteUserBooking(this.props.data.id, e)}
         >
           Cancel
         </button>

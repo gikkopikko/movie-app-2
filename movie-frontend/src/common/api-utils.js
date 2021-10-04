@@ -82,6 +82,16 @@ export function getUserBookingDetails(bookingDetailsRequest) {
   });
 }
 
+export function deleteBooking(deleteRequest) {
+  return request({
+    url:
+      API_BASE_URL +
+      `/customer-service/booking/delete/${deleteRequest.bookingId}`,
+    method: "DELETE",
+  });
+}
+
+
 export function getMovieDetails(movieId) {
   return request({
     url: API_BASE_URL + `/movie-service/movies/${movieId}`,
