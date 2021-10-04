@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
 import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
@@ -94,8 +96,36 @@ export default class MovieDesc extends Component {
                   {60 - this.state.movie.totalSeatsOccupied}
                 </span>
               </h3>
+
+              <h3 className="movie-desc-heading3">
+                Pick Your Date:
+                <span className="movie-desc-heading3-span">
+
+                <Form
+          onSubmit={this.handleLogin}
+          ref={(c) => {
+            this.form = c;
+          }}
+        >
+          <div className="movie-desc-col2-col3">
+          
+            <Input
+              type="date"
+             id="date"
+              name="date"
+              
+              
+            />
+          </div>
+          </Form>
+                 
+                </span>
+              </h3>
+              
             </div>
             <div className="movie-desc-col2-col3">
+            
+            
               <button
                 className="movie-desc-button"
                 onClick={this.handleBookNow}
@@ -103,8 +133,16 @@ export default class MovieDesc extends Component {
                 Book your ticket now
               </button>
             </div>
+
+            
           </div>
-        </div>
+
+          
+
+           
+            
+            </div>
+            
     );
   }
 }
