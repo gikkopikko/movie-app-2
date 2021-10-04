@@ -35,6 +35,7 @@ label {
 .body-container {
   background-color: #421d32;
   color: black;
+  min-height: 80vh;
 }
 .btn {
   padding-left: 10px;

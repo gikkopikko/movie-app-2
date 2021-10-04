@@ -18,6 +18,11 @@ pipeline{
 			cd signup-service
                 	mvn compile
         		"""
+  		bat """
+                	cd movie-backend
+			cd movie-service
+                	mvn compile
+        		"""
                 }
             }
 
@@ -28,6 +33,21 @@ pipeline{
 			cd auth-service
                 	mvn test
         		"""
+                bat """
+                	cd movie-backend
+			cd customer-service
+                	mvn test
+        		"""
+                bat """
+                	cd movie-backend
+			cd signup-service
+                	mvn test
+        		"""
+                bat """
+                	cd movie-backend
+			cd movie-service
+                	mvn test
+        		"""
                 }
         }
 
@@ -36,6 +56,21 @@ pipeline{
            bat """
                 	cd movie-backend
 			cd auth-service
+                	mvn clean package
+        		"""
+           bat """
+                	cd movie-backend
+			cd customer-service
+                	mvn clean package
+        		"""
+           bat """
+                	cd movie-backend
+			cd signup-service
+                	mvn clean package
+        		"""
+           bat """
+                	cd movie-backend
+			cd movie-service
                 	mvn clean package
         		"""
                 }
