@@ -17,35 +17,6 @@ class Profile extends Component {
     };
   }
 
-  // async componentDidMount() {
-  //   console.log(this.props);
-  //    try {
-  //     let data = await fetch(
-  //       "http://localhost:9091/users/" + this.props.currentUser.username
-  //     );
-  //     data = await data.json();
-    
-  //     this.setState({
-  //       name: this.props.currentUser.name,
-  //       userName: this.props.currentUser.username,
-  //       email: this.props.currentUser.email,
-  //     });
-  //    } catch (err) {
-  //      console.log(err);
-  //    }
-
-  //   try {
-  //     let bookings = await fetch(
-  //       "http://localhost:9091/booking/"+this.props.currentUser.username
-  //     );
-    
-  //     bookings = await bookings.json();
-  //     this.setState({ movieBookings: bookings });
-  //     console.log(bookings);
-  //    } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
   componentDidMount() {
   getCurrentUser()
   .then((response) => {
@@ -94,10 +65,12 @@ class Profile extends Component {
           </div>
 
           <div className="profile-bookings">
-            <h3>My bookings</h3>
+            <h3>My Bookings</h3>
+            <div className="profile-inner-bookings">
             {this.state.movieBookings.map((booking) => {
               return <MovieBooking data={booking} key={booking.id} />;
             })}
+            </div>
           </div>
         </div>
       </div>
