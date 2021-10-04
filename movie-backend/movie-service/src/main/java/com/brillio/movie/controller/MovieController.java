@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brillio.movie.model.Category;
@@ -33,6 +34,7 @@ public class MovieController {
 
 	@GetMapping("/movies/{movieId}")
 	public Movie getMovieDetails(@PathVariable String movieId) {
+		System.out.println("Testing");
 		return movieRepository.findByMovieId(movieId).get();
 
 	}
@@ -41,7 +43,7 @@ public class MovieController {
 	public ResponseEntity<?> setOccupiedSeats(@PathVariable String movieId,
 			@RequestBody SetOccupiedRequest setOccupiedRequest) {
 		Optional<Movie> movie = movieRepository.findByMovieId(movieId);
-		if (movie.isEmpty())
+		if (movie.isPresent())
 			return new ResponseEntity<>("Movie Not Found", HttpStatus.NOT_FOUND);
 		Movie updatedMovie = movie.get();
 		List<Integer> newOccupied = updatedMovie.getOccupiedSeats();

@@ -2,7 +2,6 @@ package com.brillio.booking.controller;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,10 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import com.brillio.auth.repository.CustomerBookingRepository;
-import com.brillio.auth.repository.CustomerRepository;
-import com.brillio.booking.model.CustomerBooking;
+
 import com.brillio.booking.model.Customer;
+import com.brillio.booking.model.CustomerBooking;
+import com.brillio.booking.repository.CustomerBookingRepository;
+import com.brillio.booking.repository.CustomerRepository;
+import com.brillio.booking.service.BookingService;
 
 
 @RestController
@@ -26,6 +27,9 @@ CustomerBookingRepository customerBookingRepository;
 @Autowired
 CustomerRepository customerRepository;
 
+@Autowired
+BookingService bookingService;
+
 
 	@GetMapping("/bookings/{username}")
 	public ResponseEntity<?> getCustomerBookings(@PathVariable String username) {
@@ -37,16 +41,18 @@ CustomerRepository customerRepository;
 	
 	@GetMapping("/users")
 	public ResponseEntity<?> getAllCustomers() {
-		List<Customer> customer= customerRepository.findAll();
-		return ResponseEntity.ok(customer);
+		List<Customer> customer= bookingService.getAllCustomers();
+		System.out.println("Data from DB"+customer);
+		return new ResponseEntity<List<Customer>>(customer, HttpStatus.OK);
 	
 	}
 
 	
 	@GetMapping("/users/{username}")
-	public ResponseEntity<?> getCustomers(@PathVariable String username) {
-		Optional<Customer> customer= customerRepository.findByUsername(username);
-		return ResponseEntity.ok(customer);
+	public ResponseEntity<Customer> getCustomers(@PathVariable("username") String userName) {
+		Customer findCustomerByUsername = bookingService.findCustomerByUsername(userName);
+		System.out.println("From Domy DB"+findCustomerByUsername);
+		return new ResponseEntity<Customer>(findCustomerByUsername, HttpStatus.OK);
 	
 	}
 

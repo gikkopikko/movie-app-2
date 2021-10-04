@@ -1,4 +1,4 @@
-package com.brillio.auth.repository;
+package com.brillio.booking.repository;
 
 import java.util.List;
 

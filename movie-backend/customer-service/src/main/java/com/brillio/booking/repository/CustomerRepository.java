@@ -1,4 +1,4 @@
-package com.brillio.auth.repository;
+package com.brillio.booking.repository;
 
 import java.util.Optional;
 
@@ -10,6 +10,7 @@ import com.brillio.booking.model.Customer;
 @Repository
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 	Optional<Customer> findByUsername(String username);
+	
 
 	Boolean existsByUsername(String username);
 }
