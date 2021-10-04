@@ -7,15 +7,15 @@ export default function Categories() {
     const [movieData,setMovieData] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:9095/allCategoryDetails")
-        .then(res => res.json())
-        .then(data => {
-            setMovieData(data);
-        });
+        // fetch("http://localhost:9095/allCategoryDetails")
+        // .then(res => res.json())
+        // .then(data => {
+        //     setMovieData(data);
+        // });
 
 
-        getMovieDetails("horror1")
-        .then(data => console.log(data));
+        getMoviesByCategory()
+        .then(data => setMovieData(data));
     },[]);
 
     return (
