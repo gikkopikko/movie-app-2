@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter, Switch, Route, Link } from "react-router-dom";
+import { withRouter, Switch, Route, Link, Redirect } from "react-router-dom";
 import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -14,7 +14,7 @@ import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
 import MovieDesc from "./components/MovieDescription";
-
+import Redirectto from "./components/Redirectto";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -100,6 +100,11 @@ class App extends Component {
             </div>
           </header>
           <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => <Redirectto {...props} />}
+            ></Route>
             <Route
               exact
               path="/login"

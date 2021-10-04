@@ -6,13 +6,14 @@
 
 .seats-booking-body {
   text-align: center;
-  background-color: #242333;
+  /* background-color: #242333; */
+  background-color: #421d32;
   color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  /* justify-content: center; */
+  min-height: 90vh;
   font-family: "Lato", sans-serif;
   margin: 0;
   min-width: 100vw;
@@ -133,7 +134,7 @@ p.seat-bookng-text span {
 }
 
 .seat-booking-btn {
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 4px 15px;
   font-size: 1.5rem;
   color: white;
@@ -141,10 +142,11 @@ p.seat-bookng-text span {
   border: 3px solid white;
 }
 .seat-booking-btn:hover {
-  color: #242333;
+  /* color: #242333; */
+  color: #421d32;
   background-color: white;
 }
 
 .movie-name-text {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }

@@ -43,7 +43,7 @@ export default class MovieBooking extends React.Component {
         <p>Booking Id: {this.props.data.id}</p>
         <p>Movie: {this.props.data.movieName}</p>
         <p>Seats Booked: {this.props.data.seatsBooked.join(", ")}</p>
-        <p>Number of Seats Booked: {this.props.data.numberOfSeats}</p>
+        <p>Number of Seats Booked: {this.props.data.seatsBooked.length}</p>
         <p>Amount Paid: {this.props.data.amountPaid}</p>
         <button
           className="profile-button"
