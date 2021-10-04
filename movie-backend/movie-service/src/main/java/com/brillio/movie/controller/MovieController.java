@@ -54,7 +54,7 @@ public class MovieController {
 	public ResponseEntity<?> setOccupiedSeats(@PathVariable String movieId,
 			@RequestBody SetOccupiedRequest setOccupiedRequest) {
 		Optional<Movie> movie = movieRepository.findByMovieId(movieId);
-		if (movie.isPresent())
+		if (movie.isEmpty())
 			return new ResponseEntity<>("Movie Not Found", HttpStatus.NOT_FOUND);
 		Movie updatedMovie = movie.get();
 		List<Integer> newOccupied = updatedMovie.getOccupiedSeats();
