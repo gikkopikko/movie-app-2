@@ -5,7 +5,6 @@ import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
 
-
 import {getMovieDetails } from "../common/api-utils";
 
 export default class MovieDesc extends Component {
@@ -102,24 +101,20 @@ export default class MovieDesc extends Component {
                 Pick Your Date:
                 <span className="movie-desc-heading3-span">
 
-         
-          <div className="movie-desc-col2-col3">
-          
-            <Input
-              type="date"
-             id="date"
-              name="date"
-              
-              
-            />
-          </div>
-  </span>
+                  <Form  onSubmit={this.handleDate} ref={(c) => {this.form = c; }}>
+                         
+                    <div className="movie-desc-col2-col3">
+                      <Input type="date" id="date"  name="date" />
+                    </div>
+                  </Form>
+                </span>
               </h3>
-              
+
             </div>
             <div className="movie-desc-col2-col3">
-            
-            
+                 
+
+
               <button
                 className="movie-desc-button"
                 onClick={this.handleBookNow}
@@ -127,16 +122,8 @@ export default class MovieDesc extends Component {
                 Book your ticket now
               </button>
             </div>
-
-            
           </div>
-
-          
-
-           
-            
-            </div>
-            
+        </div>
     );
   }
 }
