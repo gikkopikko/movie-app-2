@@ -1,12 +1,17 @@
 import React, { Component } from "react";
+
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { form, control, button } from 'react-validation'; 
+import  "../css/Register.css";
+// import { input } from "react-validation/build/input";
+// import { form } from "react-validation/build/form";
+import { login } from "../common/api-utils";
 
-import AuthService from "../services/auth.service";
+import "../css/login.css";
 
-const required = value => {
+const ACCESS_TOKEN = "accessToken";
+const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -27,19 +32,19 @@ export default class Login extends Component {
       username: "",
       password: "",
       loading: false,
-      message: ""
+      message: "",
     };
   }
 
   onChangeUsername(e) {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
     });
   }
 
   onChangePassword(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
     });
   }
 
@@ -48,42 +53,51 @@ export default class Login extends Component {
 
     this.setState({
       message: "",
-      loading: true
+      loading: true,
     });
 
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthService.login(this.state.username, this.state.password).then(
-        () => {
-          this.props.history.push("/profile");
-          window.location.reload();
-        },
-        error => {
+      const loginRequest = {
+        username: this.state.username,
+        password: this.state.password,
+      };
+      login(loginRequest)
+        .then((response) => {
+          localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+          this.props.onLogin();
+        })
+        .catch((error) => {
+          console.log(error);
+          // if (error.status === 401) {
+          //   alert("Your Username or Password is incorrect. Please try again!");
+          // } else {
+          //   alert("Sorry! Something went wrong. Please try again!");
+          // }
           const resMessage =
             (error.response &&
               error.response.data &&
               error.response.data.message) ||
             error.message ||
             error.toString();
-
           this.setState({
+            message: resMessage,
             loading: false,
-            message: resMessage
           });
-        }
-      );
+        });
     } else {
       this.setState({
-        loading: false
+        loading: false,
       });
     }
   }
 
   render() {
     return (
+      <div className="body-container">
       <div className="col-md-12">
-        <div className="card card-container">
+        <div className="cardR card-container-Register">
           <img
             src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
             alt="profile-img"
@@ -92,7 +106,7 @@ export default class Login extends Component {
 
           <Form
             onSubmit={this.handleLogin}
-            ref={c => {
+            ref={(c) => {
               this.form = c;
             }}
           >
@@ -141,13 +155,19 @@ export default class Login extends Component {
             )}
             <CheckButton
               style={{ display: "none" }}
-              ref={c => {
+              ref={(c) => {
                 this.checkBtn = c;
               }}
             />
           </Form>
         </div>
       </div>
+    
+
+
+      </div>
+
+
     );
   }
 }
