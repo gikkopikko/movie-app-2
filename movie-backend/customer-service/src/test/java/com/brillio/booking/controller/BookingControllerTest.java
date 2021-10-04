@@ -5,8 +5,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +25,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.brillio.booking.model.Customer;
 import com.brillio.booking.repository.CustomerRepository;
-import com.brillio.booking.service.BookingServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -45,10 +46,12 @@ public class BookingControllerTest {
 	@Test
 	public void getAllCustomersTest() throws Exception {
 
+		Set<String> s=new HashSet<>();
+		s.add("user");
 		List<Customer> l = new ArrayList<Customer>();
-		Customer c = new Customer("Rakesh", "rak", "Rakesh@123");
+		Customer c = new Customer("Rakesh", "rak","rakesh@gmail.com", "Rakesh@123", s);
 
-		Customer c1 = new Customer("rakesh", "Rakesh.patel", "Rakesh@123");
+		Customer c1 = new Customer("rakesh", "Rakesh.patel","patel@gmail.com", "Rakesh@123",s);
 		l.add(c);
 		l.add(c1);
 		when(customerRepo.findAll()).thenReturn(l);
@@ -59,9 +62,11 @@ public class BookingControllerTest {
 	
 	@Test
 	public void getCustomerByNameTest() throws Exception {
+		Set<String> s=new HashSet<>();
+		s.add("user");
 
 		List<Customer> l = new ArrayList<Customer>();
-		Customer c = new Customer("Rakesh", "rak", "Rakesh@123");
+		Customer c = new Customer("Rakesh", "rak","rakesh@gmail.com", "Rakesh@123", s);
 
 		when(customerRepo.findByUsername("Rakesh")).thenReturn(Optional.of(c));
 

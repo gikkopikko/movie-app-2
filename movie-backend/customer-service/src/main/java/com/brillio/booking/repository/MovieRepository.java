@@ -1,4 +1,4 @@
-package com.brillio.auth.repository;
+package com.brillio.booking.repository;
 
 import com.brillio.booking.model.Movie;
 import org.springframework.data.mongodb.repository.MongoRepository;

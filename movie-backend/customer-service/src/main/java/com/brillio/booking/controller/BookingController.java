@@ -2,6 +2,7 @@ package com.brillio.booking.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
 //import com.brillio.auth.repository.MovieRepository;
 //import com.brillio.booking.model.Movie;
@@ -18,20 +19,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-<<<<<<< HEAD
-
-=======
 import org.springframework.web.client.RestTemplate;
 
-import com.brillio.auth.repository.CustomerBookingRepository;
-import com.brillio.auth.repository.CustomerRepository;
+import com.brillio.booking.model.Customer;
 import com.brillio.booking.model.CustomerBooking;
 import com.brillio.booking.payload.ApiResponse;
 import com.brillio.booking.payload.BookingRequest;
 import com.brillio.booking.payload.SetOccupiedRequest;
->>>>>>> d8d9093c9ed7c2a6356125f707fae399875d1589
-import com.brillio.booking.model.Customer;
-import com.brillio.booking.model.CustomerBooking;
 import com.brillio.booking.repository.CustomerBookingRepository;
 import com.brillio.booking.repository.CustomerRepository;
 import com.brillio.booking.service.BookingService;

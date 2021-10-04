@@ -9,7 +9,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
@@ -36,11 +38,12 @@ public class BookingServiceTest {
 
 	@Test
 	public void getAllCustomerTest() throws Exception {
+		Set<String> s=new HashSet<>();
+		s.add("user");
      
-		Customer c=new Customer("Rakesh","rak","Rakesh@123");
-	
-		
-		Customer c1=new Customer("rakesh","Rakesh.patel","Rakesh@123");
+		Customer c = new Customer("Rakesh", "rak","rakesh@gmail.com", "Rakesh@123", s);
+
+		Customer c1 = new Customer("rakesh", "Rakesh.patel","patel@gmail.com", "Rakesh@123",s);
 		
 
 		given(custRepo.findAll()).willReturn(Arrays.asList(c, c1));
