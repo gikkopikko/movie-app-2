@@ -3,7 +3,7 @@ import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
 
-import {getMovieDetails } from "../common/api-utils";
+import { getMovieDetails } from "../common/api-utils";
 
 export default class MovieDesc extends Component {
   constructor(props) {
@@ -11,7 +11,9 @@ export default class MovieDesc extends Component {
   }
 
   state = {
-    movie: {},
+    movie: {
+      actors: [],
+    },
   };
 
   // componentDidMount() {
@@ -24,7 +26,7 @@ export default class MovieDesc extends Component {
   //     });
   // }
 
-  componentDidMount(){
+  componentDidMount() {
     getMovieDetails(this.props.match.params.id).then((response) => {
       this.setState({
         movie: response,
@@ -66,7 +68,7 @@ export default class MovieDesc extends Component {
               <h3 className="movie-desc-heading3">
                 Actors:
                 <span className="movie-desc-heading3-span">
-                  {this.state.movie.actors}
+                  {this.state.movie.actors.join(", ")}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">

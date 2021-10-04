@@ -123,7 +123,8 @@ class App extends Component {
             <Route
               path="/profile"
               render={(props) => (
-                <Profile currentUser={this.state.currentUser} {...props} />
+                // <Profile currentUser={this.state.currentUser} {...props} />
+                <Profile {...props} />
               )}
             ></Route>
             <Route path="/movie/:id" component={MovieDesc} />
