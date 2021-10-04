@@ -8,6 +8,7 @@ const API_BASE_URL = "http://localhost:9092";
 const request = (options) => {
   const headers = new Headers({
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "http://localhost:3000",
   });
 
   if (localStorage.getItem(ACCESS_TOKEN)) {
@@ -57,10 +58,10 @@ export function getCurrentUser() {
   });
 }
 
-export function getMoviesByCategory(){
+export function getMoviesByCategory() {
   return request({
-    url : API_BASE_URL+'/movie-service/allCategoryDetails',
-    method: 'GET',
+    url: API_BASE_URL + "/movie-service/allCategoryDetails",
+    method: "GET",
   });
 }
 
@@ -81,6 +82,16 @@ export function getUserBookingDetails(bookingDetailsRequest) {
     method: "GET",
   });
 }
+
+export function deleteBooking(deleteRequest) {
+  return request({
+    url:
+      API_BASE_URL +
+      `/customer-service/booking/delete/${deleteRequest.bookingId}`,
+    method: "DELETE",
+  });
+}
+
 
 export function getMovieDetails(movieId) {
   return request({

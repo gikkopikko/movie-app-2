@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
+
 import {getMovieDetails } from "../common/api-utils";
 
 export default class MovieDesc extends Component {

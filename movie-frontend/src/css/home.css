@@ -15,6 +15,7 @@ body {
   overflow: hidden;
   background-color: #302c2c;
   color: #fff;
+  height: 140px;
 }
 
 .footer .inner {

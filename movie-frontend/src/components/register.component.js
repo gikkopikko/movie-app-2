@@ -56,7 +56,8 @@ const vpassword = (value) => {
 };
 
 const validPassword = new RegExp("^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$");
-const validName = new RegExp("^[A-Za-z]+$");
+
+const validName = new RegExp("^[A-Za-z ]+$");
 
 export default class Register extends Component {
   constructor(props) {

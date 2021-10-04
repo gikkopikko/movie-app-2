@@ -1,6 +1,7 @@
 label {
   display: block;
   margin-top: 10px;
+  color: black;
 }
 
 .card-container.card {
@@ -35,4 +36,9 @@ label {
   background-color: #421d32;
   margin-top: 0px;
   margin: 0%;
+}
+
+.col-md-12 {
+  padding-bottom: 15px;
+  padding-top: 15px;
 }
