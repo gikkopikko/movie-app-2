@@ -7,6 +7,7 @@ const API_BASE_URL = "http://localhost:9092";
 const request = (options) => {
   const headers = new Headers({
     "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "http://localhost:3000",
   });
 
   if (localStorage.getItem(ACCESS_TOKEN)) {

@@ -18,7 +18,7 @@ import com.brillio.movie.repository.CategoryRepository;
 import com.brillio.movie.repository.MovieRepository;
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class MovieController {
 
 	@Autowired
