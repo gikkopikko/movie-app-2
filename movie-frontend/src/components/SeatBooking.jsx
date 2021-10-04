@@ -97,7 +97,7 @@ export default class SeatBooking extends Component {
       .then((response) => {
         alert(response.message);
         console.log(response);
-        setInterval(() => {
+        setTimeout(() => {
           this.props.history.push("/profile");
         }, 1000);
       })
