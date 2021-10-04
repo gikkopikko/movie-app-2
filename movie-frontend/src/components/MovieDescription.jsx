@@ -38,8 +38,7 @@ export default class MovieDesc extends Component {
   };
   render() {
     return (
-      <body className="movie-desc-container">
-        <div>
+        <div className="movie-desc-body">
           <div className="movie-desc-col1">
             <img
               src={this.state.movie.posterURL}
@@ -52,25 +51,25 @@ export default class MovieDesc extends Component {
             <p>{this.state.movie.description}</p>
             <div className="movie-desc-col2-col1">
               <h3 className="movie-desc-heading3">
-                Movie Name:
+                Movie Name :{' '}
                 <span className="movie-desc-heading3-span">
                   {this.state.movie.movieName}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">
-                Category:
+                Category :{' '}
                 <span className="movie-desc-heading3-span">
                   {this.state.movie.category}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">
-                Actors:
+                Actors :{' '}
                 <span className="movie-desc-heading3-span">
                   {this.state.movie.actors}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">
-                Rating:
+                Rating :{' '}
                 <span className="movie-desc-heading3-span">
                   {this.state.movie.rating}
                 </span>
@@ -78,19 +77,19 @@ export default class MovieDesc extends Component {
             </div>
             <div className="movie-desc-col2-col2">
               <h3 className="movie-desc-heading3">
-                Director:
+                Director :{' '}
                 <span className="movie-desc-heading3-span">
                   {this.state.movie.director}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">
-                Price:
+                Price :{' '}
                 <span className="movie-desc-heading3-span">
                   {this.state.movie.price}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">
-                Seats Remaining:
+                Seats Remaining :{' '}
                 <span className="movie-desc-heading3-span">
                   {60 - this.state.movie.totalSeatsOccupied}
                 </span>
@@ -106,7 +105,7 @@ export default class MovieDesc extends Component {
             </div>
           </div>
         </div>
-      </body>
     );
   }
 }
+

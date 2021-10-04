@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
 
+import MovieDesc from "./components/MovieDescription";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
@@ -13,8 +14,10 @@ import Profile from "./components/Profile";
 import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
+
 import MovieDesc from "./components/MovieDescription";
 import Redirectto from "./components/Redirectto";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -100,6 +103,7 @@ class App extends Component {
             </div>
           </header>
           <Switch>
+
             <Route
               exact
               path="/"
@@ -134,6 +138,7 @@ class App extends Component {
                 <Home currentUser={this.state.currentUser} {...props} />
               )}
             ></Route>
+
           </Switch>
         </div>
 
