@@ -5,6 +5,7 @@ import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
 
+
 import {getMovieDetails } from "../common/api-utils";
 
 export default class MovieDesc extends Component {
@@ -101,12 +102,7 @@ export default class MovieDesc extends Component {
                 Pick Your Date:
                 <span className="movie-desc-heading3-span">
 
-                <Form
-          onSubmit={this.handleLogin}
-          ref={(c) => {
-            this.form = c;
-          }}
-        >
+         
           <div className="movie-desc-col2-col3">
           
             <Input
@@ -117,9 +113,7 @@ export default class MovieDesc extends Component {
               
             />
           </div>
-          </Form>
-                 
-                </span>
+  </span>
               </h3>
               
             </div>
