@@ -4,6 +4,7 @@ const { fetch, Request, Response, Headers } = fetchPonyfill({ Promise });
 
 const ACCESS_TOKEN = "accessToken";
 const API_BASE_URL = "http://localhost:9092";
+
 const request = (options) => {
   const headers = new Headers({
     "Content-Type": "application/json",
@@ -57,6 +58,13 @@ export function getCurrentUser() {
   });
 }
 
+export function getMoviesByCategory() {
+  return request({
+    url: API_BASE_URL + "/movie-service/allCategoryDetails",
+    method: "GET",
+  });
+}
+
 export function getBookingDetails(bookingDetailsRequest) {
   return request({
     url:
@@ -74,6 +82,7 @@ export function getUserBookingDetails(bookingDetailsRequest) {
     method: "GET",
   });
 }
+
 export function getMovieDetails(movieId) {
   return request({
     url: API_BASE_URL + `/movie-service/movies/${movieId}`,
@@ -100,12 +109,4 @@ export function createBooking(bookingRequest) {
 
 export function logout() {
   localStorage.removeItem(ACCESS_TOKEN);
-}
-
-export function getMoviesByCategory() {
-  return request({
-    url: API_BASE_URL + "/movie-service/allCategoryDetails",
-
-    method: "GET",
-  });
 }

@@ -56,11 +56,6 @@ export default class SeatBooking extends Component {
       });
       console.log(response);
     });
-    // .catch((error) => console.log(error));
-
-    getMoviesByCategory()
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
   }
 
   seatClick = (i, e) => {

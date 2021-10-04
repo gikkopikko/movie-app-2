@@ -41,7 +41,7 @@
 
 .profile-booking {
   width: 80%;
-  border: solid 2px black;
+  border: solid 2px rgb(248, 244, 244);
   margin: 15px 10px;
   display: flex;
   flex-direction: column;

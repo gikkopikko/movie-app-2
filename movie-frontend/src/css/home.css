@@ -124,6 +124,7 @@ header .left {
   flex-direction: row;
   align-items: flex-start;
   flex: 3;
+  padding: 3px 5px;
 }
 
 header .right {
