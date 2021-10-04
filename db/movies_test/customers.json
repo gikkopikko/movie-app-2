@@ -34,4 +34,28 @@
     "USER"
   ],
   "_class": "com.brillio.auth.model.Customer"
+},{
+  "_id": {
+    "$oid": "615493f2540d4906676f4748"
+  },
+  "username": "Alankrita2",
+  "name": "Alankrita",
+  "email": "alanspatel@gmail.com",
+  "password": "$2a$10$pLGqGlpsfd3IqSlFYG9gPuvEIKnN5UWMW9RZKdYJRurcvE6I2S/8.",
+  "roles": [
+    "USER"
+  ],
+  "_class": "com.brillio.auth.model.Customer"
+},{
+  "_id": {
+    "$oid": "61555393cad150228a15ff8f"
+  },
+  "username": "Alankrita",
+  "name": "AlankritaPatel",
+  "email": "alanspatel@gmail.com",
+  "password": "$2a$10$L0Ld2vYWe1pyOfxTO5a8O.Vtlr1cH868FLW4h1zDxkgApdYSAFm7S",
+  "roles": [
+    "USER"
+  ],
+  "_class": "com.brillio.auth.model.Customer"
 }]

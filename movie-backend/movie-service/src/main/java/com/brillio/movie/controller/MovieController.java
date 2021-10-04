@@ -18,6 +18,8 @@ import com.brillio.movie.repository.CategoryRepository;
 import com.brillio.movie.repository.MovieRepository;
 
 @RestController
+
+
 @CrossOrigin
 
 public class MovieController {
@@ -33,6 +35,18 @@ public class MovieController {
 
 	}
 
+	@GetMapping("/movies/category/{category}")
+	public List<Movie> getMoviesByCategory(@PathVariable String category){
+		return movieRepository.findAllByCategory(category);
+	}
+	
+	@GetMapping("/movies/price/{movieId}")
+	public String getPriceByMovie(@PathVariable String movieId) {
+		Movie movie = movieRepository.findByMovieId(movieId).get();
+		return movie.getPrice();
+	
+	}
+
 	@PutMapping("/setoccupied/{movieId}")
 	public ResponseEntity<?> setOccupiedSeats(@PathVariable String movieId,
 			@RequestBody SetOccupiedRequest setOccupiedRequest) {
@@ -42,6 +56,22 @@ public class MovieController {
 		Movie updatedMovie = movie.get();
 		List<Integer> newOccupied = updatedMovie.getOccupiedSeats();
 		newOccupied.addAll(setOccupiedRequest.getSelected());
+		Integer newTotalOccupied = newOccupied.size();
+		updatedMovie.setOccupiedSeats(newOccupied);
+		updatedMovie.setTotalSeatsOccupied(newTotalOccupied);
+		movieRepository.save(updatedMovie);
+		return ResponseEntity.ok(newOccupied);
+	}
+	
+	@PutMapping("/deleteoccupied/{movieId}")
+	public ResponseEntity<?> deleteOccupiedSeats(@PathVariable String movieId,
+			@RequestBody SetOccupiedRequest setOccupiedRequest) {
+		Optional<Movie> movie = movieRepository.findByMovieId(movieId);
+		if (movie.isEmpty())
+			return new ResponseEntity<>("Movie Not Found", HttpStatus.NOT_FOUND);
+		Movie updatedMovie = movie.get();
+		List<Integer> newOccupied = updatedMovie.getOccupiedSeats();
+		newOccupied.removeAll(setOccupiedRequest.getSelected());
 		Integer newTotalOccupied = newOccupied.size();
 		updatedMovie.setOccupiedSeats(newOccupied);
 		updatedMovie.setTotalSeatsOccupied(newTotalOccupied);
