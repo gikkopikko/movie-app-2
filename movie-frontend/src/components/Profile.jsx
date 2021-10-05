@@ -18,10 +18,8 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    console.log("conponent did mount...............");
     getCurrentUser()
       .then((response) => {
-        console.log("getting current user..........");
         this.setState({
           name: response.name,
           userName: response.username,
@@ -43,7 +41,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log("rendering.........");
     return (
       <div className="profile-container">
         <div className="profile-inner-container">
