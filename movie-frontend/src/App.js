@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
 
-import MovieDesc from "./components/MovieDescription";
+// import MovieDesc from "./components/MovieDescription";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
@@ -14,6 +14,8 @@ import Profile from "./components/Profile";
 import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
+
+import MovieDesc from "./components/MovieDescription";
 import Redirectto from "./components/Redirectto";
 
 class App extends Component {

@@ -31,7 +31,7 @@ import com.brillio.booking.model.Customer;
 
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class BookingController {
 
 	 String url = "http://localhost:9095/movies/price/";
