@@ -14,8 +14,6 @@ import Profile from "./components/Profile";
 import { getCurrentUser, logout } from "../src/common/api-utils";
 import SeatBooking from "./components/SeatBooking";
 
-
-import MovieDesc from "./components/MovieDescription";
 import Redirectto from "./components/Redirectto";
 
 class App extends Component {

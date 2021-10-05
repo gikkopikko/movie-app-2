@@ -39,7 +39,7 @@ const vname = (value) => {
   if (!validName.test(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must only contain alphabets.
+        The name must only contain alphabets.
       </div>
     );
   }
@@ -49,7 +49,7 @@ const vpassword = (value) => {
   if (!validPassword.test(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must contain Alphanumeric values with symbols.
+        The password must contain Alphanumeric values with special characters.
       </div>
     );
   }
