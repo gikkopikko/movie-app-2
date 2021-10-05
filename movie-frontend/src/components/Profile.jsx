@@ -52,10 +52,12 @@ class Profile extends Component {
           </div>
 
           <div className="profile-bookings">
-            <h3>My bookings</h3>
+            <h3>My Bookings</h3>
+            <div className="profile-inner-bookings">
             {this.state.movieBookings.map((booking) => {
               return <MovieBooking data={booking} key={booking.id} />;
             })}
+            </div>
           </div>
         </div>
       </div>

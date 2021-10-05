@@ -1,7 +1,7 @@
 // import Enzyme, {mount, shallow, render} from './enzyme' // IMPORT STMT FROM EMZYME
 import Enzyme, {mount, shallow, configure, render} from 'enzyme'
 import MovieDesc from '../components/MovieDescription' //IMPORT YOUR COMPONENT
-import React from 'react'
+import React from 'react';
 
 import Adapter from 'enzyme-adapter-react-16';
 import renderer from 'react-test-renderer';
