@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 // import "./App.css";
 
-// import MovieDesc from "./components/MovieDescription";
+import MovieDesc from "./components/MovieDescription";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/Home";
@@ -138,8 +138,6 @@ class App extends Component {
             ></Route>
           </Switch>
         </div>
-
-        {/*<AuthVerify logOut={this.logOut}/> */}
 
         <Footer />
       </div>

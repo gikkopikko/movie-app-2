@@ -45,12 +45,7 @@ public class AuthController {
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = tokenProvider.generateToken(authentication);
-//		  Cookie cookie = new Cookie("JWTToken","Bearer-"+new JwtAuthenticationResponse(jwt).getAccessToken());
 
-		    // expires in 7 days
-//		    cookie.setMaxAge(7 * 24 * 60 * 60);
-//		    response.addCookie(cookie);
-//		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	    return new ResponseEntity<>(new JwtAuthenticationResponse(jwt), HttpStatus.OK);
 	}
 	
