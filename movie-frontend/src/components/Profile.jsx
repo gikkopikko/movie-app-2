@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {getCurrentUser, getUserBookingDetails } from "../common/api-utils";
+import { getCurrentUser, getUserBookingDetails } from "../common/api-utils";
 
 import "../css/profile.css";
 
@@ -17,70 +17,28 @@ class Profile extends Component {
     };
   }
 
-  // async componentDidMount() {
-  //   console.log(this.props);
-  //    try {
-  //     let data = await fetch(
-  //       "http://localhost:9091/users/" + this.props.currentUser.username
-  //     );
-  //     data = await data.json();
-    
-  //     this.setState({
-  //       name: this.props.currentUser.name,
-  //       userName: this.props.currentUser.username,
-  //       email: this.props.currentUser.email,
-  //     });
-  //    } catch (err) {
-  //      console.log(err);
-  //    }
-
-  //   try {
-  //     let bookings = await fetch(
-  //       "http://localhost:9091/booking/"+this.props.currentUser.username
-  //     );
-    
-  //     bookings = await bookings.json();
-  //     this.setState({ movieBookings: bookings });
-  //     console.log(bookings);
-  //    } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
   componentDidMount() {
-  getCurrentUser()
-  .then((response) => {
-    this.setState({
-      name: response.name,
-      userName: response.username,
-      email: response.email,
-    });
-    const bookingDetailsRequest = {
-      username: response.username,
-    };
-    return getUserBookingDetails(bookingDetailsRequest);
-  })
-  .then((response) => {
-    this.setState({
-      movieBookings: response,
-    });
-    console.log(response);
-  })
-  .catch((error) => console.log(error));
-
-}
-
-  // async componentDidUpdate() {
-  //   try {
-  //     let bookings = await fetch(
-  //       "http://localhost:9091/bookings/siddharth.garg"
-  //     );
-  //     bookings = await bookings.json();
-  //     this.setState({ movieBookings: bookings });
-  //     console.log(bookings);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+    getCurrentUser()
+      .then((response) => {
+        this.setState({
+          name: response.name,
+          userName: response.username,
+          email: response.email,
+        });
+        const bookingDetailsRequest = {
+          username: response.username,
+        };
+        return getUserBookingDetails(bookingDetailsRequest);
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          movieBookings: response,
+        });
+        console.log("after set stateeeeeeeeeeeeeeee");
+      })
+      .catch((error) => console.log(error));
+  }
 
   render() {
     return (
@@ -94,10 +52,12 @@ class Profile extends Component {
           </div>
 
           <div className="profile-bookings">
-            <h3>My bookings</h3>
+            <h3>My Bookings</h3>
+            <div className="profile-inner-bookings">
             {this.state.movieBookings.map((booking) => {
               return <MovieBooking data={booking} key={booking.id} />;
             })}
+            </div>
           </div>
         </div>
       </div>

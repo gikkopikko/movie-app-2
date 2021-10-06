@@ -97,6 +97,7 @@
   list-style-type: none;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .showcase li {
@@ -149,4 +150,18 @@ p.seat-bookng-text span {
 
 .movie-name-text {
   font-size: 2rem;
+}
+
+@media only screen and (max-width: 500px) {
+  /* For tablets: */
+  .showcase li {
+    padding-right: 8px;
+  }
+  .seat:nth-of-type(2) {
+    margin-right: inherit;
+  }
+
+  .seat:nth-last-of-type(2) {
+    margin-left: inherit;
+  }
 }

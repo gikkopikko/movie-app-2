@@ -12,7 +12,7 @@ describe("tests", () => {
     it("to check whether the profile component is loaded or not", () => {
       const wrapper = shallow(<Profile match={match} />);
     });
-    
+
   });
 });
 
@@ -20,4 +20,5 @@ const match = {
   path: "/profile",
   url: "/profile",
   isExact: true,
+  params: {},
 };

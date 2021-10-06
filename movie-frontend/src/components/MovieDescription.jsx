@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
 import axios from "axios";
 import "../css/main.css";
 import "../css/moviedescription.css";
 
-import {getMovieDetails } from "../common/api-utils";
+import { getMovieDetails } from "../common/api-utils";
 
 export default class MovieDesc extends Component {
   constructor(props) {
@@ -11,7 +13,9 @@ export default class MovieDesc extends Component {
   }
 
   state = {
-    movie: {},
+    movie: {
+      actors: [],
+    },
   };
 
   // componentDidMount() {
@@ -24,7 +28,7 @@ export default class MovieDesc extends Component {
   //     });
   // }
 
-  componentDidMount(){
+  componentDidMount() {
     getMovieDetails(this.props.match.params.id).then((response) => {
       this.setState({
         movie: response,
@@ -65,7 +69,7 @@ export default class MovieDesc extends Component {
               <h3 className="movie-desc-heading3">
                 Actors :{' '}
                 <span className="movie-desc-heading3-span">
-                  {this.state.movie.actors}
+                  {this.state.movie.actors.join(", ")}
                 </span>
               </h3>
               <h3 className="movie-desc-heading3">
@@ -94,8 +98,25 @@ export default class MovieDesc extends Component {
                   {60 - this.state.movie.totalSeatsOccupied}
                 </span>
               </h3>
+
+              <h3 className="movie-desc-heading3">
+                Pick Your Date:
+                <span className="movie-desc-heading3-span">
+
+                  <Form  onSubmit={this.handleDate} ref={(c) => {this.form = c; }}>
+                         
+                    <div className="movie-desc-col2-col3">
+                      <Input type="date" id="date"  name="date" />
+                    </div>
+                  </Form>
+                </span>
+              </h3>
+
             </div>
             <div className="movie-desc-col2-col3">
+                 
+
+
               <button
                 className="movie-desc-button"
                 onClick={this.handleBookNow}

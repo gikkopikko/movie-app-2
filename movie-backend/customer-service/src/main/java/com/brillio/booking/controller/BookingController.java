@@ -31,7 +31,7 @@ import com.brillio.booking.model.Customer;
 
 
 @RestController
-@CrossOrigin
+//@CrossOrigin
 public class BookingController {
 
 	 String url = "http://localhost:9095/movies/price/";
@@ -148,8 +148,5 @@ public class BookingController {
 		return ResponseEntity.ok(customerBooking.get());
 	}
 
-	@GetMapping("/aaa")
-	public String getAaa() {
-		return "Aaaaaaaaaa";
-	}
+
 }
