@@ -5,7 +5,6 @@ import {
   getMovieDetails,
   createBooking,
   getCurrentUser,
-  getMoviesByCategory,
 } from "../common/api-utils";
 
 const rows = [0, 1, 2, 3, 4, 5];

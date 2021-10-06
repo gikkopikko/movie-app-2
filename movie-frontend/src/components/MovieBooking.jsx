@@ -32,12 +32,11 @@ export default class MovieBooking extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-      
+
     window.location.reload();
   };
 
   render() {
-    console.log(this.props.data);
     return (
       <div className="profile-booking">
         <p>Booking Id: {this.props.data.id}</p>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {getCurrentUser, getUserBookingDetails } from "../common/api-utils";
+import { getCurrentUser, getUserBookingDetails } from "../common/api-utils";
 
 import "../css/profile.css";
 
@@ -18,40 +18,27 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-  getCurrentUser()
-  .then((response) => {
-    this.setState({
-      name: response.name,
-      userName: response.username,
-      email: response.email,
-    });
-    const bookingDetailsRequest = {
-      username: response.username,
-    };
-    return getUserBookingDetails(bookingDetailsRequest);
-  })
-  .then((response) => {
-    this.setState({
-      movieBookings: response,
-    });
-    console.log(response);
-  })
-  .catch((error) => console.log(error));
-
-}
-
-  // async componentDidUpdate() {
-  //   try {
-  //     let bookings = await fetch(
-  //       "http://localhost:9091/bookings/siddharth.garg"
-  //     );
-  //     bookings = await bookings.json();
-  //     this.setState({ movieBookings: bookings });
-  //     console.log(bookings);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+    getCurrentUser()
+      .then((response) => {
+        this.setState({
+          name: response.name,
+          userName: response.username,
+          email: response.email,
+        });
+        const bookingDetailsRequest = {
+          username: response.username,
+        };
+        return getUserBookingDetails(bookingDetailsRequest);
+      })
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          movieBookings: response,
+        });
+        console.log("after set stateeeeeeeeeeeeeeee");
+      })
+      .catch((error) => console.log(error));
+  }
 
   render() {
     return (
