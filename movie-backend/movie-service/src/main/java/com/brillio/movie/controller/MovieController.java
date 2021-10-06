@@ -107,8 +107,5 @@ public class MovieController {
 		return allCategoryDetails;
 	}
 
-	@GetMapping("/aaa")
-	public String getAaa() {
-		return "Aaaaaaaaaa";
-	}
+
 }
