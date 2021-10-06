@@ -33,7 +33,6 @@ public class MovieController {
 
 	@GetMapping("/movies/{movieId}")
 	public Movie getMovieDetails(@PathVariable String movieId) {
-		System.out.println("Testing");
 		return movieRepository.findByMovieId(movieId).get();
 
 	}
